@@ -10,6 +10,8 @@ import java.util.List;
 
 import org.hibernate.cfg.Configuration;
 
+import com.agenda.model.Contact;
+
 public class ContactDAO implements IContactDAO {
 	
 	public List<Contact> searchListContact(String sql) {
@@ -22,7 +24,7 @@ public class ContactDAO implements IContactDAO {
 			result.beforeFirst();
 			while (result.next()) {
 
-				listContact.add(new Contact(result.getString(2), result.getString(3)));
+				listContact.add(new Contact(result.getInt(0), result.getString(1), result.getString(3), result.getString(4), result.getString(5), null));
 				System.out.println("Entra en result");
 
 			}

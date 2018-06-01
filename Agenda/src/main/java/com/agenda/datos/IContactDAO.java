@@ -1,7 +1,8 @@
 package com.agenda.datos;
 
-import java.sql.Statement;
 import java.util.List;
+
+import com.agenda.model.Contact;
 
 public interface IContactDAO {
 	
