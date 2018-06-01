@@ -1,5 +1,6 @@
 package com.agenda.model;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -16,7 +17,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="persona")
-public class Contact {
+public class Contact implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,21 +40,21 @@ public class Contact {
 	
 	@OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "persona_id")
-    private Set<Telefonos> telefonos;
+    private Set<Phones> phones;
 
 
 	public Contact() {
 	}
 
 
-	public Contact(int idPerson, String name, String surname1, String surname2, String dni, Set<Telefonos> telefonos) {
+	public Contact(int idPerson, String name, String surname1, String surname2, String dni, Set<Phones> phones) {
 		super();
 		this.idPerson = idPerson;
 		this.name = name;
 		this.surname1 = surname1;
 		this.surname2 = surname2;
 		this.dni = dni;
-		this.telefonos = telefonos;
+		this.phones = phones;
 	}
 
 
@@ -105,20 +108,20 @@ public class Contact {
 	}
 
 
-	public Set<Telefonos> getTelefonos() {
-		return telefonos;
+	public Set<Phones> getPhone() {
+		return phones;
 	}
 
 
-	public void setTelefonos(Set<Telefonos> telefonos) {
-		this.telefonos = telefonos;
+	public void setTelefonos(Set<Phones> phones) {
+		this.phones = phones;
 	}
 
 
 	@Override
 	public String toString() {
 		return "Contact [idPerson=" + idPerson + ", name=" + name + ", surname1=" + surname1 + ", surname2=" + surname2
-				+ ", dni=" + dni + ", telefonos=" + telefonos + "]";
+				+ ", dni=" + dni + ", telefonos=" + phones + "]";
 	}
 	
 	
