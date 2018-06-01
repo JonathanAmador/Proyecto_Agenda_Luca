@@ -1,5 +1,12 @@
 package com.agenda.datos;
 
-public interface IContactDAO {
+import java.sql.Statement;
+import java.util.List;
 
+public interface IContactDAO {
+	
+	public List<Contact> ListContact(String sql);
+	private  Statement createStatement();
+	
 }
+
