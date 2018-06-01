@@ -1,5 +1,6 @@
 package com.agenda.datos;
 
+<<<<<<< HEAD
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -60,5 +61,12 @@ public static List<Persona> devolverPersona(String sql) {
 		}
 		return st;
 	}
+=======
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class ContactDAO implements IContactDAO {
+	
+>>>>>>> 1bf753624df7f82b0a3102c67b2ae7e920f5a623
 	
 }
