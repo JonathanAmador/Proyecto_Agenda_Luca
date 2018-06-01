@@ -3,16 +3,18 @@ package com.agenda.datos;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.cfg.Configuration;
 
-public class ContactDAO {
-		
-public static List<Contact> searchListContact(String sql) {
-		
+public class ContactDAO implements IContactDAO {
+	
+	@Override
+	public List<Contact> ListContact(String sql) {
+
 		List<Contact> listContact = null;
 		try {
 			ResultSet result = createStatement().executeQuery(sql);
@@ -21,8 +23,7 @@ public static List<Contact> searchListContact(String sql) {
 			result.beforeFirst();
 			while (result.next()) {
 
-				
-				listContact.add(new Contact(result.getString(2),result.getString(3)));
+				listContact.add(new Contact(result.getString(2), result.getString(3)));
 				System.out.println("Entra en result");
 
 			}
@@ -30,14 +31,14 @@ public static List<Contact> searchListContact(String sql) {
 			System.err.println("--- ERROR: Problem in ejecutaQuery");
 			System.err.println(e.getMessage());
 		}
-		if(listContact == null)
+		if (listContact == null)
 			System.out.println("Vacia");
-		
-		System.out.println("mi sql"+sql);
+
+		System.out.println("mi sql" + sql);
 		return listContact;
 	}
 
-	private static Statement createStatement() {
+	private Statement createStatement() {
 		Connection conn = null;
 		Statement st = null;
 
@@ -61,5 +62,4 @@ public static List<Contact> searchListContact(String sql) {
 		return st;
 	}
 
-	
 }
