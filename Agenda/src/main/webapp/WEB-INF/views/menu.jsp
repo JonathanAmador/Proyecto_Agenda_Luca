@@ -27,7 +27,7 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li>Ver Contactos: no fucional</li>
+        <li><form > Ver Contactos: no fucional	</form></li>
         <li>OPCION3</li>
         <li>OPCION2</li>
       </ul>

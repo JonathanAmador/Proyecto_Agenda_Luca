@@ -13,7 +13,7 @@ import org.springframework.web.servlet.view.JstlView;
 @Configuration
 // Spring will search for annotations on classes specified 
 //     in the value parameter that is passed to @ComponentScan 
-@ComponentScan({ "com.springmvc" })   // context:component-scan base-package="..."
+@ComponentScan({ "com.agenda" })   // context:component-scan base-package="..."
 public class SpringWebConfig extends WebMvcConfigurerAdapter {
 	
 	/*
