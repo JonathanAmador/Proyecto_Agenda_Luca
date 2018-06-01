@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="categorias")
-public class Categorias {
+public class Categories {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,20 +17,20 @@ public class Categorias {
 	private int id;
 	
 	@Column(name="nombre")
-	private String nombre;
+	private String name;
 	
 	@Column(name="descripcion")
-	private String descripcion;
+	private String description;
 
-	public Categorias() {
+	public Categories() {
 		
 	}
 
-	public Categorias(int id, String nombre, String descripcion) {
+	public Categories(int id, String name, String description) {
 		super();
 		this.id = id;
-		this.nombre = nombre;
-		this.descripcion = descripcion;
+		this.name = name;
+		this.description = description;
 	}
 
 	public int getId() {
@@ -41,25 +41,25 @@ public class Categorias {
 		this.id = id;
 	}
 
-	public String getNombre() {
-		return nombre;
+	public String getName() {
+		return name;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getDescripcion() {
-		return descripcion;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	@Override
 	public String toString() {
-		return "Categorias [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + "]";
+		return "Categorias [id=" + id + ", nombre=" + name + ", descripcion=" + description + "]";
 	}
 	
 	
