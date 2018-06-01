@@ -1,6 +1,5 @@
 package com.agenda.datos;
 
-<<<<<<< HEAD
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -12,18 +11,18 @@ import org.hibernate.cfg.Configuration;
 
 public class ContactDAO {
 		
-public static List<Persona> devolverPersona(String sql) {
+public static List<Contact> searchListContact(String sql) {
 		
-		List<Persona> listPerson = null;
+		List<Contact> listContact = null;
 		try {
 			ResultSet result = createStatement().executeQuery(sql);
 
-			listPerson = new ArrayList<Persona>();
+			listContact = new ArrayList<Contact>();
 			result.beforeFirst();
 			while (result.next()) {
 
 				
-				listPerson.add(new Persona(result.getString(2),result.getString(3)));
+				listContact.add(new Contact(result.getString(2),result.getString(3)));
 				System.out.println("Entra en result");
 
 			}
@@ -31,11 +30,11 @@ public static List<Persona> devolverPersona(String sql) {
 			System.err.println("--- ERROR: Problem in ejecutaQuery");
 			System.err.println(e.getMessage());
 		}
-		if(listPerson == null)
+		if(listContact == null)
 			System.out.println("Vacia");
 		
 		System.out.println("mi sql"+sql);
-		return listPerson;
+		return listContact;
 	}
 
 	private static Statement createStatement() {
@@ -61,12 +60,6 @@ public static List<Persona> devolverPersona(String sql) {
 		}
 		return st;
 	}
-=======
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
-public class ContactDAO implements IContactDAO {
-	
->>>>>>> 1bf753624df7f82b0a3102c67b2ae7e920f5a623
 	
 }
