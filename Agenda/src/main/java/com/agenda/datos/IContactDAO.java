@@ -5,8 +5,7 @@ import java.util.List;
 
 public interface IContactDAO {
 	
-	public List<Contact> ListContact(String sql);
-	private  Statement createStatement();
+	public List<Contact> searchListContact(String sql);
 	
 }
 

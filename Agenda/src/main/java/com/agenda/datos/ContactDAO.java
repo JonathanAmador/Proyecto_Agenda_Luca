@@ -12,8 +12,7 @@ import org.hibernate.cfg.Configuration;
 
 public class ContactDAO implements IContactDAO {
 	
-	@Override
-	public List<Contact> ListContact(String sql) {
+	public List<Contact> searchListContact(String sql) {
 
 		List<Contact> listContact = null;
 		try {

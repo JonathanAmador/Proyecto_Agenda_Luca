@@ -1,5 +1,17 @@
 package com.agenda.services;
 
-public class ContactServices {
+import java.sql.Statement;
+import java.util.List;
 
+import com.agenda.datos.Contact;
+import com.agenda.datos.ContactDAO;
+import com.agenda.datos.IContactDAO;
+
+public class ContactServices implements IContactServices {
+	private IContactDAO contactDao = new ContactDAO ();
+
+	public List<Contact> searchListContact(String sql){
+		return contactDao.searchListContact(sql);
+	}
+	
 }
