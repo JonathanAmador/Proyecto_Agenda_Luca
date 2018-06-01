@@ -11,40 +11,40 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "telefonos")
-public class Telefonos implements Serializable{
+public class Phones implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
 	 @Id
 	 @GeneratedValue(strategy = GenerationType.IDENTITY)
-	 private int idTelefonos;
+	 private int idPhone;
 	 @Column(name="telefono")
-	 private String telefono;
+	 private String phone;
 
-	public Telefonos() {
+	public Phones() {
 		
 	}
 
-	public Telefonos(int idTelefonos, String telefono) {
+	public Phones(int idPhone, String phone) {
 		super();
-		this.idTelefonos = idTelefonos;
-		this.telefono = telefono;
+		this.idPhone = idPhone;
+		this.phone = phone;
 	}
 
-	public int getIdTelefonos() {
-		return idTelefonos;
+	public int getIdPhone() {
+		return idPhone;
 	}
 
-	public void setIdTelefonos(int idTelefonos) {
-		this.idTelefonos = idTelefonos;
+	public void setIdPhone(int idPhone) {
+		this.idPhone = idPhone;
 	}
 
-	public String getTelefono() {
-		return telefono;
+	public String getPhone() {
+		return phone;
 	}
 
-	public void setTelefono(String telefono) {
-		this.telefono = telefono;
+	public void setTelefono(String phone) {
+		this.phone = phone;
 	}
 
 	public static long getSerialversionuid() {
@@ -53,7 +53,7 @@ public class Telefonos implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Telefonos [idTelefono=" + idTelefonos + ", telefono=" + telefono + "]";
+		return "Telefonos [idTelefono=" + idPhone + ", telefono=" + phone + "]";
 	}
 	
 	
