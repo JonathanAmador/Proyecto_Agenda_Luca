@@ -7,5 +7,5 @@ import com.agenda.model.Contact;
 public interface IContactServices {
 	public List<Contact> searchListContact(String sql);
 	
-	public Contact searchContact(Contact idContact);
+	public Contact searchContact(int idContact);
 }

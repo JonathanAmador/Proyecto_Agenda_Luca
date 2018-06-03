@@ -14,8 +14,8 @@ public class ContactServices implements IContactServices {
 	}
 
 	@Override
-	public Contact searchContact(String sql) {
-		return contactDao.searchContact(sql);
+	public Contact searchContact(int idContact) {
+		return contactDao.searchContact(idContact);
 	}
 	
 }

@@ -66,7 +66,7 @@ public class ContactDAO implements IContactDAO {
 	}
 
 	@Override
-	public Contact searchContact(Contact idContact) {
+	public Contact searchContact(int idContact) {
 		
 		Contact contact = null;
 		
