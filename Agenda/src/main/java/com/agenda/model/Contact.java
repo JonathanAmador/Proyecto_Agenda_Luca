@@ -38,8 +38,6 @@ public class Contact implements Serializable{
 	@Column(name="dni")
 	private String dni;
 	
-	@Column(name="idEmpleado")
-	private int idEmp;
 	
 	@OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idEmpleado")
@@ -53,6 +51,9 @@ public class Contact implements Serializable{
     @JoinColumn(name = "iddepartamento")
 	private Department department;
 	
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idCategoria")
+	private Categories categorie;
 	
 	@OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "persona_id")
@@ -62,7 +63,7 @@ public class Contact implements Serializable{
 	public Contact() {
 	}
 
-
+//NO SE USA
 	public Contact(int idPerson, String name, String surname1, String surname2, String dni, Set<Phones> phones) {
 		super();
 		this.idPerson = idPerson;
@@ -71,6 +72,17 @@ public class Contact implements Serializable{
 		this.surname2 = surname2;
 		this.dni = dni;
 		this.phones = phones;
+	}
+	
+	public Contact(int idPerson, String name, String surname1, Set<Phones> phones, Department department, Categories categorie) {
+		super();
+		this.idPerson = idPerson;
+		this.name = name;
+		this.surname1 = surname1;
+		this.phones = phones;
+		this.department = department;
+		this.categorie = categorie;
+		
 	}
 
 

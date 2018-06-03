@@ -11,7 +11,9 @@ import java.util.Set;
 
 import org.hibernate.cfg.Configuration;
 
+import com.agenda.model.Categories;
 import com.agenda.model.Contact;
+import com.agenda.model.Department;
 import com.agenda.model.Phones;
 
 public class ContactDAO implements IContactDAO {
@@ -20,13 +22,17 @@ public class ContactDAO implements IContactDAO {
 
 		List<Contact> listContact = null;
 		try {
-			ResultSet result = createStatement().executeQuery(sql);
-
+			ResultSet result01 = createStatement().executeQuery("select p.idPersona, p.nombre, p.apellido1, t.telefono, d.nombre, c.nombre from personas p, telefonos t, departamentos d, categorias c where p.idPersona = t.idPersona and p.idEmpleado in (select idEmpleado from empleados where idCategoria = c.idcategorias and idDepartamento = d.iddepartamento) and p.nombre like '%%' and t.telefono like '%%';");
+			
+			
 			listContact = new ArrayList<Contact>();
-			result.beforeFirst();
-			while (result.next()) {
+			result01.beforeFirst();
+			while (result01.next()) {
+				//Posible problema
+				//listContact.add(new Contact(result.getInt(0)/*IdPersona*/, result.getString(1)/*Nombre*/,result.getString(2)/*APELLIDO*/, result.getString(3)/*TELEFONO*/, result.getString(4)/*CATEGORIA*/, result.getString(5)/*DEPARTAMENTO*/, null));
+				ResultSet result02 = createStatement().executeQuery("select  t.telefono from telefonos t where t.idPersona in (select idPersona from personas where idPersona = "+result01.getInt(0)+") t.telefono like '%%';");
+			    //listContact.add(new Contact(result01.getInt(0)/*IdPersona*/, result01.getString(1)/*Nombre*/,result01.getString(2)/*APELLIDO*/, new Department(result01.getString(4),new Categories(result01.getString(5));
 
-				listContact.add(new Contact(result.getInt(0), result.getString(1), result.getString(3), result.getString(4), result.getString(5), null));
 				System.out.println("Entra en result");
 
 			}
@@ -75,6 +81,12 @@ public class ContactDAO implements IContactDAO {
 			ResultSet result = createStatement().executeQuery("select p.idPersona, p.nombre, p.apellido1, p.apellido2 ,p.dni, p.idEmpleado, p.idDireccion from personas p where p.idPersona = "+idContact+"; ");
 
 			contact = new Contact(result.getInt(0), result.getString(1), result.getString(2), result.getString(3), result.getString(4), null);
+			
+			//Query empleado
+			result = createStatement().executeQuery("select p.idPersona, p.nombre, p.apellido1, p.apellido2 ,p.dni, p.idEmpleado, p.idDireccion from personas p where p.idPersona = "+idContact+"; ");
+			contact = new Contact(result.getInt(0), result.getString(1), result.getString(2), result.getString(3), result.getString(4), null);
+			
+			
 			result.beforeFirst();
 			//while (result.next()) {
 
