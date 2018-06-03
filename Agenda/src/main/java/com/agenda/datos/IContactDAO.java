@@ -8,5 +8,6 @@ public interface IContactDAO {
 	
 	public List<Contact> searchListContact(String sql);
 	
+	public Contact searchContact(Contact idContact);
 }
 

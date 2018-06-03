@@ -1,6 +1,5 @@
 package com.agenda.services;
 
-import java.sql.Statement;
 import java.util.List;
 
 import com.agenda.datos.ContactDAO;
@@ -12,6 +11,11 @@ public class ContactServices implements IContactServices {
 
 	public List<Contact> searchListContact(String sql){
 		return contactDao.searchListContact(sql);
+	}
+
+	@Override
+	public Contact searchContact(String sql) {
+		return contactDao.searchContact(sql);
 	}
 	
 }

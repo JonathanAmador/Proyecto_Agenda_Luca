@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -36,6 +37,21 @@ public class Contact implements Serializable{
 	
 	@Column(name="dni")
 	private String dni;
+	
+	@Column(name="idEmpleado")
+	private int idEmp;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idEmpleado")
+    private Employee employee;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idDireccion")
+	private Address address;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "iddepartamento")
+	private Department department;
 	
 	
 	@OneToMany(cascade = CascadeType.ALL)

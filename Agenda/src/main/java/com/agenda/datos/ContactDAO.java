@@ -7,10 +7,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.cfg.Configuration;
 
 import com.agenda.model.Contact;
+import com.agenda.model.Phones;
 
 public class ContactDAO implements IContactDAO {
 	
@@ -61,6 +63,36 @@ public class ContactDAO implements IContactDAO {
 			System.exit(0);
 		}
 		return st;
+	}
+
+	@Override
+	public Contact searchContact(Contact idContact) {
+		
+		Contact contact = null;
+		
+		try {
+			
+			ResultSet result = createStatement().executeQuery("select p.idPersona, p.nombre, p.apellido1, p.apellido2 ,p.dni, p.idEmpleado, p.idDireccion from personas p where p.idPersona = "+idContact+"; ");
+
+			contact = new Contact(result.getInt(0), result.getString(1), result.getString(2), result.getString(3), result.getString(4), null);
+			result.beforeFirst();
+			//while (result.next()) {
+
+				
+				System.out.println("Entra en result");
+
+			//}
+		} catch (Exception e) {
+			System.err.println("--- ERROR: Problem in ejecutaQuery");
+			System.err.println(e.getMessage());
+		}
+		if (contact == null)
+			System.out.println("No hay contacto");
+
+		//System.out.println("mi sql" + sql);
+		//return listContact;
+		
+		return null;
 	}
 
 }

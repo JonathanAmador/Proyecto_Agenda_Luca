@@ -8,10 +8,7 @@ import java.sql.Statement;
 
 import org.hibernate.cfg.Configuration;
 
-/**
-*
-* @author Antonio Santos
-*/
+
 public class JdbcUtils {
 
 	
