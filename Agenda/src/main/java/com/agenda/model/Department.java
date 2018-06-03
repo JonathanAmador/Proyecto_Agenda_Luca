@@ -25,9 +25,10 @@ public class Department implements Serializable {
 
 	}
 
-	public Department(int idDepartment) {
+	public Department(int idDepartment, String nameDepartment) {
 		super();
 		this.idDepartment = idDepartment;
+		this.nameDepartment = nameDepartment;
 	}
 
 	public static long getSerialversionuid() {
