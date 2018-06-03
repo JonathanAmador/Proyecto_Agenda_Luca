@@ -6,8 +6,8 @@
 	<session-factory>
 		<!-- Datasource de la Base de Datos -->
 		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-		<property name="connection.url">jdbc:mysql://localhost:3306/tablas_de_prueba</property>
-		<property name="connection.username">root</property>
+		<property name="connection.url">jdbc:mysql://10.90.36.17:3306/agenda</property>
+		<property name="connection.username">super</property>
 		<property name="connection.password">1111</property>
 
 		<!-- Propiedades adicionales -->		
