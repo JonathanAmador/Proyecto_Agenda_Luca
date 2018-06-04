@@ -9,11 +9,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import javax.transaction.Transactional;
+
 import org.hibernate.cfg.Configuration;
+import org.springframework.stereotype.Service;
 
 import com.agenda.model.Contact;
 
 
+@Service
+@Transactional
 public class ContactDAO implements IContactDAO {
 	
 	public List<Contact> searchListContact(String sql) {
