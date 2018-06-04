@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/")
+//@RequestMapping("/")
 public class InitController {
 
 	@GetMapping()
 	public ModelAndView inicio(ModelMap model) {
-		ModelAndView mav = new ModelAndView("menu");   
+		ModelAndView mav = new ModelAndView("resultListContact");   
         System.out.println("entraaaaaaaaaaaaaaaaaaa");
         return mav;
 	}
