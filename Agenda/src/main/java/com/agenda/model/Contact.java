@@ -52,12 +52,14 @@ public class Contact implements Serializable{
     @JoinColumn(name = "iddepartamento")
 	private Department department;
 	
-	//@OneToOne(cascade = CascadeType.ALL)
-    //@JoinColumn(name = "idcategorias")
+	@OneToOne(cascade = CascadeType.ALL)
+	
+    @JoinColumn(name = "idcategorias")
+	
 	private Categories category;
 	
-	//@OneToMany(cascade = CascadeType.ALL)
-    //@JoinColumn(name = "persona_id")
+	@OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "persona_id")
     private Set<Phones> phones;
 
 
