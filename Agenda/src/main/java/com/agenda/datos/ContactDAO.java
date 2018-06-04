@@ -42,7 +42,7 @@ public class ContactDAO implements IContactDAO {
 		List<Contact> listUser = (List<Contact>) sessionFactory.getCurrentSession()
 				.createCriteria(Contact.class)
 				.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
-		System.out.println("LLega");
+
 		return listUser;
 		
 	}
