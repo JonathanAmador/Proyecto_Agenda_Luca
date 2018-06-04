@@ -17,13 +17,14 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name="persona")
+@Table(name="personas")
 public class Contact implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="idPersona")
     private int idPerson;
 	
 	@Column(name="nombre")
@@ -51,12 +52,12 @@ public class Contact implements Serializable{
     @JoinColumn(name = "iddepartamento")
 	private Department department;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idCategoria")
+	//@OneToOne(cascade = CascadeType.ALL)
+    //@JoinColumn(name = "idcategorias")
 	private Categories category;
 	
-	@OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "persona_id")
+	//@OneToMany(cascade = CascadeType.ALL)
+    //@JoinColumn(name = "persona_id")
     private Set<Phones> phones;
 
 
