@@ -11,10 +11,8 @@ import java.util.Set;
 
 import org.hibernate.cfg.Configuration;
 
-import com.agenda.model.Categories;
 import com.agenda.model.Contact;
-import com.agenda.model.Department;
-import com.agenda.model.Phones;
+
 
 public class ContactDAO implements IContactDAO {
 	
