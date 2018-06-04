@@ -7,7 +7,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.agenda.datos.ContactDAO;
+
 import com.agenda.datos.IContactDAO;
 import com.agenda.model.Contact;
 
