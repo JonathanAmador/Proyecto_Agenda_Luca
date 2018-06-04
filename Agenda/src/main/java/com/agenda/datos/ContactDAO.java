@@ -10,10 +10,12 @@ import java.util.Set;
 
 import javax.transaction.Transactional;
 
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import com.agenda.model.Categories;
@@ -21,8 +23,7 @@ import com.agenda.model.Contact;
 import com.agenda.model.Department;
 import com.agenda.model.Phones;
 
-@Service
-@Transactional
+@Repository
 public class ContactDAO implements IContactDAO {
 
 	@Autowired
@@ -34,40 +35,16 @@ public class ContactDAO implements IContactDAO {
 		this.sessionFactory = sessionFactory;
 	}
 	
-	
+	@Override
+	@Transactional
 	public List<Contact> searchListContact() {
-		
-		String hql = "from personas ;";
-		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		
 		@SuppressWarnings("unchecked")
-		List<Contact> listContact = (List<Contact>) query.list();
-		/*
-		//Telefonos
-		hql = "from telefonos where idPersona in (select idPersona from personas where idPersona=" + idContact+ ");";
-		query = sessionFactory.getCurrentSession().createQuery(hql);
+		List<Contact> listUser = (List<Contact>) sessionFactory.getCurrentSession()
+				.createCriteria(Contact.class)
+				.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
+
+		return listUser;
 		
-		Set<Phones> setPhones = (Set<Phones>) query.list();
-		
-		//Departamentos
-		hql = "from departamentos where iddepartamento in (select idDepartamento from personas where idPersona=" + idContact+ ");";
-		query = sessionFactory.getCurrentSession().createQuery(hql);
-		
-		Department department = (Department)query.list();
-		
-		System.out.println(department.toString());//CAMBIAR POR LOGGGGGGGGGGGGGGG
-		
-		//Categorias
-		hql = "from departamentos where iddepartamento in (select idDepartamento from personas where idPersona=" + idContact+ ");";
-		query = sessionFactory.getCurrentSession().createQuery(hql);
-		
-		Categories category = (Categories)query.list();*/
-		
-		if (listContact != null && !listContact.isEmpty()) {
-			return listContact;
-		}
-		
-		return null;
 	}
 
 	public List<Contact> searchListContact(String sql) {

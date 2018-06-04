@@ -23,7 +23,7 @@ public class ContactController { // SearchListContact
 
 	@RequestMapping("/")
 	public ModelAndView handlesRequest() throws Exception {
-		System.out.println("PASO 1");
+		System.out.println("PASO 1 ");
 		List<Contact> listContact = contactServices.searchListContact();
 		System.out.println("PASO 2");
 		ModelAndView model = new ModelAndView("resultListContact");
@@ -46,13 +46,13 @@ public class ContactController { // SearchListContact
 	
 	@RequestMapping("/showListContact")
 	public ModelAndView listContactFilter() throws Exception {
-		System.out.println("PASO 1");
+		System.out.println("PASO 1 filtrado");
 		List<Contact> listContact = contactServices.searchListContact("SQL");
-		System.out.println("PASO 2");
+		System.out.println("PASO 2 filtrado");
 		ModelAndView model = new ModelAndView("resultListContact");
-		System.out.println("PASO 3");
+		System.out.println("PASO 3 filtrado");
 		model.addObject("listContact", listContact);
-		System.out.println("PASO 4");
+		System.out.println("PASO 4 flitrado");
 		return model;
 	}
 	
