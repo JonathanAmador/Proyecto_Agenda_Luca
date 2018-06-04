@@ -37,10 +37,10 @@ public class ContactServices implements IContactServices {
 	}
 	
 	public void saveOrUpdate(Contact contact){
-		return contactDao.saveOrUpdate(contact);
+		contactDao.saveOrUpdate(contact);
 	}
 	
 	public void delete(int idContact){
-		return contactDao.delete(idContact);
+		contactDao.delete(idContact);
 	}
 }
