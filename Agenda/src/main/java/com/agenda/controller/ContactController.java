@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.agenda.model.Contact;
@@ -18,10 +19,44 @@ public class ContactController { // SearchListContact
 
 	@RequestMapping("/")
 	public ModelAndView handlesRequest() throws Exception {
-		List<Contact> listContact = contactServices.searchListContact();
-		ModelAndView model = new ModelAndView("ContactList");
-		model.addObject("contactList", listContact);
+		System.out.println("PASO 1");
+		List<Contact> listContact = contactServices.searchListContact("SQL");
+		System.out.println("PASO 2");
+		ModelAndView model = new ModelAndView("searchContact");
+		System.out.println("PASO 3");
+		model.addObject("listContact", listContact);
+		System.out.println("PASO 4");
 		return model;
 	}
+	
+	/*
+	@RequestMapping(value = "/new", method = RequestMethod.GET)
+	public ModelAndView newUser() {
+		ModelAndView model = new ModelAndView("UserForm");
+		model.addObject("user", new Contact());
+		return model;		
+	}
+	
+	@RequestMapping(value = "/edit", method = RequestMethod.GET)
+	public ModelAndView editUser(HttpServletRequest request) {
+		int userId = Integer.parseInt(request.getParameter("id"));
+		Contact contact = contactServices.get(contactId);
+		ModelAndView model = new ModelAndView("UserForm");
+		model.addObject("user", contact);
+		return model;		
+	}
+	
+	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	public ModelAndView deleteUser(HttpServletRequest request) {
+		int userId = Integer.parseInt(request.getParameter("id"));
+		contactServices.delete(contactId);
+		return new ModelAndView("redirect:/");		
+	}
+	
+	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	public ModelAndView saveUser(@ModelAttribute Contact contact) {
+		contactServices.saveOrUpdate(contact);
+		return new ModelAndView("redirect:/");
+	}*/
 	
 }

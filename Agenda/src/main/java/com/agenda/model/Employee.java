@@ -31,6 +31,13 @@ public class Employee implements Serializable {
 		super();
 		this.idEmployee = idEmployee;
 	}
+	
+	public Employee(int idEmployee, String codEmployee, int salary) {
+		super();
+		this.idEmployee = idEmployee;
+		this.codEmployee = codEmployee;
+		this.salary = salary;
+	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
