@@ -14,11 +14,11 @@ import com.agenda.model.Contact;
 @Service
 @Transactional
 public class ContactServices implements IContactServices {
-	
-	@Autowired
-	private IContactDAO contactDao = new ContactDAO ();
 
-	public List<Contact> searchListContact(String sql){
+	@Autowired
+	private IContactDAO contactDao;
+
+	public List<Contact> searchListContact(String sql) {
 		return contactDao.searchListContact(sql);
 	}
 
@@ -29,8 +29,18 @@ public class ContactServices implements IContactServices {
 
 	@Override
 	public List<Contact> searchListContact() {
-		// TODO Auto-generated method stub
-		return null;
+		return contactDao.searchListContact();
+	}
+
+	public Contact get(int idContact){
+		return contactDao.get(idContact);
 	}
 	
+	public void saveOrUpdate(Contact contact){
+		return contactDao.saveOrUpdate(contact);
+	}
+	
+	public void delete(int idContact){
+		return contactDao.delete(idContact);
+	}
 }
