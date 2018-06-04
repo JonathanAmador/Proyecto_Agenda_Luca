@@ -25,7 +25,7 @@ import com.agenda.model.Phones;
 
 
 @Configuration
-@ComponentScan("com.ejemplos.spring")
+@ComponentScan("com.agenda")
 @EnableTransactionManagement
 public class ApplicationContextConfig {
     @Bean(name = "viewResolver")
