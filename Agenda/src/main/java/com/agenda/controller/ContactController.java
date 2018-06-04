@@ -2,6 +2,8 @@ package com.agenda.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,18 +18,45 @@ public class ContactController { // SearchListContact
 
 	@Autowired
 	private IContactServices contactServices;
+	
+	
 
 	@RequestMapping("/")
 	public ModelAndView handlesRequest() throws Exception {
 		System.out.println("PASO 1");
-		List<Contact> listContact = contactServices.searchListContact("SQL");
+		List<Contact> listContact = contactServices.searchListContact();
 		System.out.println("PASO 2");
-		ModelAndView model = new ModelAndView("searchContact");
+		ModelAndView model = new ModelAndView("resultListContact");
 		System.out.println("PASO 3");
 		model.addObject("listContact", listContact);
 		System.out.println("PASO 4");
 		return model;
 	}
+	
+	@RequestMapping(value ="/showContact", method = RequestMethod.GET)
+	public ModelAndView contactInfo(HttpServletRequest request){
+		int idPerson = Integer.parseInt(request.getParameter("id"));
+		Contact contact = (Contact) contactServices.searchContact(idPerson);
+		ModelAndView model = new ModelAndView("resultContact");
+		model.addObject("contact", contact);
+		return model;
+
+		
+	}
+	
+	@RequestMapping("/showListContact")
+	public ModelAndView listContactFilter() throws Exception {
+		System.out.println("PASO 1");
+		List<Contact> listContact = contactServices.searchListContact("SQL");
+		System.out.println("PASO 2");
+		ModelAndView model = new ModelAndView("resultListContact");
+		System.out.println("PASO 3");
+		model.addObject("listContact", listContact);
+		System.out.println("PASO 4");
+		return model;
+	}
+	
+	
 	
 	/*
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
