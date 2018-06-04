@@ -53,7 +53,7 @@ public class Contact implements Serializable{
 	
 	@OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idCategoria")
-	private Categories categorie;
+	private Categories category;
 	
 	@OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "persona_id")
@@ -74,14 +74,14 @@ public class Contact implements Serializable{
 		this.phones = phones;
 	}
 	
-	public Contact(int idPerson, String name, String surname1, Set<Phones> phones, Department department, Categories categorie) {
+	public Contact(int idPerson, String name, String surname1, Set<Phones> phones, Department department, Categories category) {
 		super();
 		this.idPerson = idPerson;
 		this.name = name;
 		this.surname1 = surname1;
 		this.phones = phones;
 		this.department = department;
-		this.categorie = categorie;
+		this.category = category;
 		
 	}
 

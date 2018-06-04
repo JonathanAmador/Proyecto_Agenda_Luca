@@ -41,27 +41,31 @@
 	<!-- First Container -->
 	<div class="container-fluid bg-1 text-center">
 		<h3>Lista de contactos</h3>
-		<c:forEach var="contact" items="${listContact}">
-			<form method="POST" action="showContact">
-				<div class="product-body">
-					<h4 class="contact-name">${contact.name}</h4>
-					<h4 class="contact-surname">${contact.surname}</h4>
-				</div>
-			</form>
-		</c:forEach>
 		<div>
-                <table>
-                	<c:forEach var="user" items="${userList}" varStatus="status">
-	                	<tr>
-	                        <td>${contact.name}</td>
-	                        <td>${contact.surname}</td>
-	                        <td><a href="edit?id=${contact.id}">Modificar</a></td>
-							<td><a href="delete?id=${user.id}">Eliminar</a></td>
-							<td></td>
-	                    </tr>
-                	</c:forEach>             
-                </table> 
-        </div>
+			<table>
+				<tr>
+					<th>Nombre</th>
+					<th>Apellidos</th>
+					<th>Teléfono</th>
+					<th>Departamento</th>
+					<th>Categoría</th>
+				</tr>
+				<c:forEach var="contact" items="${userList}" varStatus="status">
+					<tr>
+						<td>${contact.name}</td>
+						<td>${contact.surname1} ${contact.surname2}</td>
+						<td><c:forEach var="phone" items="${contact.phones}" varStatus="status">
+								${phone.phone}<br>
+							</c:forEach></td>
+						<td>${contact.department.nameDepartment}</td>
+						<td>${contact.category.name }</td>
+						<td><a href="edit?id=${contact.id}">Modificar</a></td>
+						<td><a href="delete?id=${contact.id}">Eliminar</a></td>
+						<td></td>
+					</tr>
+				</c:forEach>
+			</table>
+		</div>
 	</div>
 
 
