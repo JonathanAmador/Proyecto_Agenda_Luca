@@ -41,7 +41,7 @@
 
 	<!-- First Container -->
 	<div class="container-fluid bg-1 text-center">
-		<h3>Contenedor de prueba</h3>
+		<h3>Contenedor de menu</h3>
 		<table>
 			<c:forEach var="contact" items="${contactList}" varStatus="status">
 				<tr>
