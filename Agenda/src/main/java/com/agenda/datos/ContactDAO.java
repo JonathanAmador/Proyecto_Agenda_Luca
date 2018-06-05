@@ -149,6 +149,22 @@ public class ContactDAO implements IContactDAO {
 
 	@Override
 	public Personas get(int idContact) {
+		
+		String hql ="from Personas where id='"+idContact+"'";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+
+		@SuppressWarnings("unchecked")
+		List<Personas> listContact = (List<Personas>) query.list();
+		
+		for(int i=0;i<listContact.size();i++){
+			if(listContact.get(i).toString() != null){
+				logger.info(listContact.get(i).getIdEmpleado().toString());
+			}
+		}
+		
+		System.out.println(listContact.get(0).getTelefonos().toString());
+
+		return listContact.get(0);	
 	/*	
 		String hql = "from personas where idPersona=" + idContact+";";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
@@ -178,8 +194,6 @@ public class ContactDAO implements IContactDAO {
 		if (listContact != null && !listContact.isEmpty()) {
 			return listContact.get(0);
 		}*/
-		
-		return null;
 	}
 
 	@Override
