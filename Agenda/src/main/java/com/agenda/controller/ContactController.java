@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.agenda.model.Contact;
+
+import com.agenda.model.Personas;
 import com.agenda.services.IContactServices;
 
 @Controller
@@ -24,7 +25,7 @@ public class ContactController { // SearchListContact
 	@RequestMapping("/")
 	public ModelAndView handlesRequest() throws Exception {
 		System.out.println("PASO 1 ");
-		List<Contact> listContact = contactServices.searchListContact();
+		List<Personas> listContact = contactServices.searchListContact();
 		System.out.println("PASO 2");
 		ModelAndView model = new ModelAndView("resultListContact");
 		System.out.println("PASO 3");
@@ -36,7 +37,7 @@ public class ContactController { // SearchListContact
 	@RequestMapping(value ="/showContact", method = RequestMethod.GET)
 	public ModelAndView contactInfo(HttpServletRequest request){
 		int idPerson = Integer.parseInt(request.getParameter("id"));
-		Contact contact = (Contact) contactServices.searchContact(idPerson);
+		Personas contact = (Personas) contactServices.searchContact(idPerson);
 		ModelAndView model = new ModelAndView("resultContact");
 		model.addObject("contact", contact);
 		return model;
@@ -47,7 +48,7 @@ public class ContactController { // SearchListContact
 	@RequestMapping("/showListContact")
 	public ModelAndView listContactFilter() throws Exception {
 		System.out.println("PASO 1 filtrado");
-		List<Contact> listContact = contactServices.searchListContact("SQL");
+		List<Personas> listContact = contactServices.searchListContact("SQL");
 		System.out.println("PASO 2 filtrado");
 		ModelAndView model = new ModelAndView("resultListContact");
 		System.out.println("PASO 3 filtrado");

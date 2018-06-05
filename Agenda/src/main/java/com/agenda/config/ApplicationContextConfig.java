@@ -16,12 +16,12 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-import com.agenda.model.Address;
-import com.agenda.model.Categories;
-import com.agenda.model.Contact;
-import com.agenda.model.Department;
-import com.agenda.model.Employee;
-import com.agenda.model.Phones;
+import com.agenda.model.Categorias;
+import com.agenda.model.Departamentos;
+import com.agenda.model.Direcciones;
+import com.agenda.model.Empleados;
+import com.agenda.model.Personas;
+import com.agenda.model.Telefonos;
 
 
 @Configuration
@@ -67,12 +67,12 @@ public class ApplicationContextConfig {
     public SessionFactory getSessionFactory(DataSource dataSource) {
     	LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
     	sessionBuilder.addProperties(getHibernateProperties());
-    	sessionBuilder.addAnnotatedClasses(Contact.class);
-    	sessionBuilder.addAnnotatedClasses(Department.class);
-    	sessionBuilder.addAnnotatedClasses(Categories.class);
-    	sessionBuilder.addAnnotatedClasses(Address.class);
-    	sessionBuilder.addAnnotatedClasses(Employee.class);
-    	sessionBuilder.addAnnotatedClasses(Phones.class);
+    	sessionBuilder.addAnnotatedClasses(Personas.class);
+    	sessionBuilder.addAnnotatedClasses(Departamentos.class);
+    	sessionBuilder.addAnnotatedClasses(Categorias.class);
+    	sessionBuilder.addAnnotatedClasses(Direcciones.class);
+    	sessionBuilder.addAnnotatedClasses(Empleados.class);
+    	sessionBuilder.addAnnotatedClasses(Telefonos.class);
     	return sessionBuilder.buildSessionFactory();
     }
     

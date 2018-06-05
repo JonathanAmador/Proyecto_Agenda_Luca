@@ -17,10 +17,9 @@ import org.hibernate.cfg.Configuration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.agenda.model.Categories;
-import com.agenda.model.Contact;
-import com.agenda.model.Department;
-import com.agenda.model.Phones;
+import com.agenda.model.Personas;
+
+
 
 @Repository
 public class ContactDAO implements IContactDAO {
@@ -36,24 +35,36 @@ public class ContactDAO implements IContactDAO {
 	
 	@Override
 	@Transactional
-	public List<Contact> searchListContact() {
+	public List<Personas> searchListContact() {
+		System.out.println("LLEGA 01");
+		Query query = sessionFactory.getCurrentSession().createQuery("from Personas");
+		// Query query = sessionFactory.getCurrentSession().createSQLQuery("select nombre from agenda.personas");
+		
+		//query.setResultTransformer(Transformers.aliasToBean(Contact.class)).list();
 		@SuppressWarnings("unchecked")
-		List<Contact> listUser = (List<Contact>) sessionFactory.getCurrentSession()
-				.createCriteria(Contact.class)
-				.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
-
-		return listUser;
+		List<Personas> listContact = (ArrayList<Personas>) query.list();
+		
+		if (listContact != null && !listContact.isEmpty()) {
+			System.out.println(listContact.get(0).toString());
+		}
+		//@SuppressWarnings("unchecked")
+		/*List<Contact> listContact = (List<Contact>) query.list();
+		List<Department> listUser = (List<Department>) query.list();
+		
+		 
+		return listContact;*/
+		return listContact;
 		
 	}
 
-	public List<Contact> searchListContact(String sql) {
+	public List<Personas> searchListContact(String sql) {
 
-		List<Contact> listContact = null;
+		List<Personas> listContact = null;
 		try {
 			ResultSet result01 = createStatement().executeQuery(
 					"select p.idPersona, p.nombre, p.apellido1, t.telefono, d.nombre, c.nombre from personas p, telefonos t, departamentos d, categorias c where p.idPersona = t.idPersona and p.idEmpleado in (select idEmpleado from empleados where idCategoria = c.idcategorias and idDepartamento = d.iddepartamento) and p.nombre like '%%' and t.telefono like '%%';");
 
-			listContact = new ArrayList<Contact>();
+			listContact = new ArrayList<Personas>();
 			result01.beforeFirst();
 			while (result01.next()) {
 				// Posible problema
@@ -109,24 +120,24 @@ public class ContactDAO implements IContactDAO {
 	}
 
 	@Override
-	public Contact searchContact(int idContact) {
+	public Personas searchContact(int idContact) {
 
-		Contact contact = null;
-
+		Personas contact = null;
+/*
 		try {
 
 			ResultSet result = createStatement().executeQuery(
 					"select p.idPersona, p.nombre, p.apellido1, p.apellido2 ,p.dni, p.idEmpleado, p.idDireccion from personas p where p.idPersona = "
 							+ idContact + "; ");
 
-			contact = new Contact(result.getInt(0), result.getString(1), result.getString(2), result.getString(3),
+			contact = new Personas(result.getInt(0), result.getString(1), result.getString(2), result.getString(3),
 					result.getString(4), null);
 
 			// Query empleado
 			result = createStatement().executeQuery(
 					"select p.idPersona, p.nombre, p.apellido1, p.apellido2 ,p.dni, p.idEmpleado, p.idDireccion from personas p where p.idPersona = "
 							+ idContact + "; ");
-			contact = new Contact(result.getInt(0), result.getString(1), result.getString(2), result.getString(3),
+			contact = new Personas(result.getInt(0), result.getString(1), result.getString(2), result.getString(3),
 					result.getString(4), null);
 
 			result.beforeFirst();
@@ -144,18 +155,18 @@ public class ContactDAO implements IContactDAO {
 
 		// System.out.println("mi sql" + sql);
 		// return listContact;
-
+*/
 		return null;
 	}
 
 	@Override
-	public Contact get(int idContact) {
-		
+	public Personas get(int idContact) {
+	/*	
 		String hql = "from personas where idPersona=" + idContact+";";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		
 		@SuppressWarnings("unchecked")
-		List<Contact> listContact = (List<Contact>) query.list();
+		List<Personas> listContact = (List<Personas>) query.list();
 		//Telefonos
 		hql = "from telefonos where idPersona in (select idPersona from personas where idPersona=" + idContact+ ");";
 		query = sessionFactory.getCurrentSession().createQuery(hql);
@@ -178,20 +189,20 @@ public class ContactDAO implements IContactDAO {
 		
 		if (listContact != null && !listContact.isEmpty()) {
 			return listContact.get(0);
-		}
+		}*/
 		
 		return null;
 	}
 
 	@Override
-	public void saveOrUpdate(Contact contact) {
+	public void saveOrUpdate(Personas contact) {
 		sessionFactory.getCurrentSession().saveOrUpdate(contact);
 	}
 
 	@Override
 	public void delete(int idContact) {
-		Contact contactToDelete = new Contact();
-		contactToDelete.setIdPerson(idContact);
+		Personas contactToDelete = new Personas();
+		contactToDelete.setIdPersona(idContact);
 		sessionFactory.getCurrentSession().delete(contactToDelete);
 		
 	}

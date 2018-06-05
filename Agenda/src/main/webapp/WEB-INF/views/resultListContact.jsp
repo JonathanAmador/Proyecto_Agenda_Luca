@@ -48,18 +48,11 @@
 					<th>Departamento</th>
 					<th>Categoría</th>
 				</tr>
-				<c:forEach var="contact" items="${userList}" varStatus="status">
+				<c:forEach var="contact" items="${listContact}" varStatus="status">
 					<tr>
-						<td>${contact.name}</td>
-						<td>${contact.surname1} ${contact.surname2}</td>
-						<td><c:forEach var="phone" items="${contact.phones}" varStatus="status">
-								${phone.phone}<br>
-							</c:forEach></td>
-						<td>${contact.department.nameDepartment}</td>
-						<td>${contact.category.name }</td>
-						<td><a href="edit?id=${contact.id}">Modificar</a></td>
-						<td><a href="delete?id=${contact.id}">Eliminar</a></td>
-						<td></td>
+						<td>${contact.nombre}</td>
+						<td>${contact.apellido1} ${contact.apellido2}</td>
+						
 					</tr>
 				</c:forEach>
 			</table>
