@@ -10,10 +10,15 @@ import java.util.Set;
 
 import javax.transaction.Transactional;
 
+
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -27,6 +32,8 @@ public class ContactDAO implements IContactDAO {
 
 	@Autowired
 	private SessionFactory sessionFactory;
+	
+	private static final Logger logger = LoggerFactory.getLogger("ContacDAO");
 	
 	public ContactDAO(){}
 	
@@ -169,7 +176,7 @@ public class ContactDAO implements IContactDAO {
 		
 		Department department = (Department)query.list();
 		
-		System.out.println(department.toString());//CAMBIAR POR LOGGGGGGGGGGGGGGG
+		logger.info(department.toString());
 		
 		//Categorias
 		hql = "from departamentos where iddepartamento in (select idDepartamento from personas where idPersona=" + idContact+ ");";
