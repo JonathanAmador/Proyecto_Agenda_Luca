@@ -21,7 +21,7 @@ public class Departamentos implements java.io.Serializable {
 
 	private Integer iddepartamento;
 	private String nombre;
-	private Set<Empleados> empleadoses = new HashSet<Empleados>(0);
+	private Set<Empleados> empleados = new HashSet<Empleados>(0);
 
 	public Departamentos() {
 	}
@@ -30,9 +30,9 @@ public class Departamentos implements java.io.Serializable {
 		this.nombre = nombre;
 	}
 
-	public Departamentos(String nombre, Set<Empleados> empleadoses) {
+	public Departamentos(String nombre, Set<Empleados> empleados) {
 		this.nombre = nombre;
-		this.empleadoses = empleadoses;
+		this.empleados = empleados;
 	}
 
 	@Id
@@ -57,12 +57,12 @@ public class Departamentos implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "departamentos")
-	public Set<Empleados> getEmpleadoses() {
-		return this.empleadoses;
+	public Set<Empleados> getEmpleados() {
+		return this.empleados;
 	}
 
-	public void setEmpleadoses(Set<Empleados> empleadoses) {
-		this.empleadoses = empleadoses;
+	public void setEmpleados(Set<Empleados> empleados) {
+		this.empleados = empleados;
 	}
 
 }
