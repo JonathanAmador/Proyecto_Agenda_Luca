@@ -6,12 +6,11 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import javax.transaction.Transactional;
 
 
-import org.hibernate.Criteria;
+
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -43,7 +42,7 @@ public class ContactDAO implements IContactDAO {
 	@Override
 	@Transactional
 	public List<Personas> searchListContact() {
-		System.out.println("LLEGA 01");
+		logger.info("Mostrando listado de personas");
 		Query query = sessionFactory.getCurrentSession().createQuery("from Personas");
 		// Query query = sessionFactory.getCurrentSession().createSQLQuery("select nombre from agenda.personas");
 		
