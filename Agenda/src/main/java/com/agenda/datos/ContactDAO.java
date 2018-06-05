@@ -37,6 +37,7 @@ public class ContactDAO implements IContactDAO {
 	@Override
 	@Transactional
 	public List<Contact> searchListContact() {
+		
 		@SuppressWarnings("unchecked")
 		List<Contact> listUser = (List<Contact>) sessionFactory.getCurrentSession()
 				.createCriteria(Contact.class)
