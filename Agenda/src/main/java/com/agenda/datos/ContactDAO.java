@@ -42,17 +42,13 @@ public class ContactDAO implements IContactDAO {
 	
 	@Override
 	@Transactional
-<<<<<<< HEAD
-	public List<Contact> searchListContact() {
-		
-=======
 	public List<Personas> searchListContact() {
 		System.out.println("LLEGA 01");
 		Query query = sessionFactory.getCurrentSession().createQuery("from Personas");
 		// Query query = sessionFactory.getCurrentSession().createSQLQuery("select nombre from agenda.personas");
 		
 		//query.setResultTransformer(Transformers.aliasToBean(Contact.class)).list();
->>>>>>> Implementacion
+
 		@SuppressWarnings("unchecked")
 		List<Personas> listContact = (ArrayList<Personas>) query.list();
 		
