@@ -107,4 +107,10 @@ public class Empleados implements java.io.Serializable {
 		this.fechaAlta = fechaAlta;
 	}
 
+	@Override
+	public String toString() {
+		return "Empleados [idEmpleado=" + idEmpleado + ", categorias=" + categorias + ", departamentos=" + departamentos
+				+ ", codEmpleado=" + codEmpleado + ", salario=" + salario + ", fechaAlta=" + fechaAlta + "]";
+	}
+
 }

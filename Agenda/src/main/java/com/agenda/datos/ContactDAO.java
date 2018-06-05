@@ -43,16 +43,30 @@ public class ContactDAO implements IContactDAO {
 	@Transactional
 	public List<Personas> searchListContact() {
 		logger.info("Mostrando listado de personas");
-		Query query = sessionFactory.getCurrentSession().createQuery("from Personas");
+		//String hql ="from Personas p,Departamentos d,Categorias c where p.idEmpleado in (select idEmpleado from Empleados where idDepartamento = d.iddepartamento )";
+		
+		String hql ="from Personas";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 
 		@SuppressWarnings("unchecked")
 		List<Personas> listContact = (List<Personas>) query.list();
+		
+		
+		
+		for(int i=0;i<listContact.size();i++){
+			if(listContact.get(i).toString() != null){
+			System.out.println(listContact.get(i).getIdEmpleado().toString());
+			}
+		}
+		System.out.println("PAsa for");
+
 
 		
 		return listContact;
 		
 	}
-
+	
+//QUITAR METODO
 	public List<Personas> searchListContact(String sql) {
 
 		List<Personas> listContact = null;
