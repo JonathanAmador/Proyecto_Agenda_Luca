@@ -42,6 +42,7 @@
 		<h1>FORMULARIO DE USUARIOS (add/edit)</h1>
 		<table>
 			<form:form action="save" method="post" modelAttribute="user">
+				
 				<form:hidden path="idPersona" />
 				<tr>
 					<td>Usuario:</td>

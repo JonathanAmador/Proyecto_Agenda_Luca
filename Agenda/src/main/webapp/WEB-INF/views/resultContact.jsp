@@ -130,78 +130,25 @@
 			<div class="home-wrap">
 				<!-- home slick -->
 				
-				<!-- BREADCRUMB -->
-	<!-- Search -->
-					<div class="header-search">
-						<form>
-							<input class="input search-input" type="text" placeholder="Introduce el nombre del contacto" size="100">
-							<button class="search-btn"><i class="fa fa-search"></i></button>
-						</form>
-					</div>
-					<!-- /Search -->
-	<!-- /BREADCRUMB -->
 				<h1>Lista de contactos</h1>
 
-<table>
-  <tr>
-    <th>Nombre</th>
-	<th>Apellidos</th>
-	<th>Teléfono</th>
-	<th>Departamento</th>
-	<th>Categoría</th>
-     
-  </tr>
-  <tr>
-   <c:forEach var="contact" items="${listContact}" varStatus="status">
-    <td>${Contact.name}</td>
-    <td>${Contact.surname} ${contact.surname2}</td>
-    
-    <td><c:forEach var="phone" items="${contact.phones}" varStatus="status">
-		${phone.phone}<br>
-	</c:forEach></td>
-							
-    <td>${contact.department.nameDepartment}</td>
-    <td>${contact.category.name }</td>
-    <td><a href="edit?id">Modificar</a></td>
-    <td><a href="deleted?id">Eliminar</a></td>
-    </c:forEach>
-  </tr>
-  
-  
-  
-</table>
-        
-        
-         
-         
-				
-				<!-- /home slick -->
-			</div>
-			<!-- /home wrap -->
-		</div>
-		<!-- /container -->
-	</div>
-	<!-- /HOME -->
+				<table>
+					<tr>
+						<th>Nombre: ${contact.nombre}</th>
+						<th>Apellidos</th>
+						<th>Teléfono</th>
+						<th>Departamento</th>
+						<th>Categoría</th>
 
-	<!-- section -->
-	<div class="section">
-		<!-- container -->
-		<div class="container">
-			<!-- row -->
-			<div class="row">
-				
-
-				
+					</tr>
+					
 
 
-			</div>
-			<!-- /row -->
-		</div>
-		<!-- /container -->
-	</div>
-	
 
-	<!-- FOOTER -->
+				</table>
+
+
+				<!-- FOOTER -->
 	<footer id="footer" class="section section-grey">
 		<!-- container -->
 		<div class="container">

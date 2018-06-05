@@ -37,7 +37,7 @@ public class ContactController { // SearchListContact
 	@RequestMapping(value ="/showContact", method = RequestMethod.GET)
 	public ModelAndView contactInfo(HttpServletRequest request){
 		int idPerson = Integer.parseInt(request.getParameter("id"));
-		Personas contact = (Personas) contactServices.searchContact(idPerson);
+		Personas contact = (Personas) contactServices.get(idPerson);
 		ModelAndView model = new ModelAndView("resultContact");
 		model.addObject("contact", contact);
 		return model;
@@ -70,9 +70,12 @@ public class ContactController { // SearchListContact
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
 	public ModelAndView editUser(HttpServletRequest request) {
 		int userId = Integer.parseInt(request.getParameter("id"));
+		System.out.println("ID:"+userId);
+		
 		Personas contact = contactServices.get(userId);
+		System.out.println("Cogiendo usuario:"+contact.getNombre());
 		ModelAndView model = new ModelAndView("newContact");
-		model.addObject("user", contact);
+		model.addObject("contact", contact);
 		return model;		
 	}
 	
