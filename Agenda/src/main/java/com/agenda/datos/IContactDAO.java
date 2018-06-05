@@ -2,19 +2,20 @@ package com.agenda.datos;
 
 import java.util.List;
 
-import com.agenda.model.Contact;
+import com.agenda.model.Personas;
+
 
 public interface IContactDAO {
 	
-	public List<Contact> searchListContact();
+	public List<Personas> searchListContact();
 	
-	public List<Contact> searchListContact(String sql);
+	public List<Personas> searchListContact(String sql);
 	
-	public Contact searchContact(int idContact);
+	public Personas searchContact(int idContact);
 	
-	public Contact get(int idContact);
+	public Personas get(int idContact);
 	
-	public void saveOrUpdate(Contact contact);
+	public void saveOrUpdate(Personas contact);
 	
 	public void delete(int idContact);
 }
