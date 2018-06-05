@@ -66,16 +66,17 @@ public class ContactController { // SearchListContact
 		model.addObject("user", new Contact());
 		return model;		
 	}
-	
+	*/
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
 	public ModelAndView editUser(HttpServletRequest request) {
 		int userId = Integer.parseInt(request.getParameter("id"));
-		Contact contact = contactServices.get(contactId);
-		ModelAndView model = new ModelAndView("UserForm");
+		Personas contact = contactServices.get(userId);
+		ModelAndView model = new ModelAndView("newContact");
 		model.addObject("user", contact);
 		return model;		
 	}
 	
+	/*
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
 	public ModelAndView deleteUser(HttpServletRequest request) {
 		int userId = Integer.parseInt(request.getParameter("id"));
