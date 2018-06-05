@@ -61,16 +61,16 @@ public class ContactDAO implements IContactDAO {
 		return listContact;	
 	}
 	
-//QUITAR METODO
+
 	public List<Personas> searchListContact(String cadena) {
 		boolean nombre =false;
 		List<Personas> listContact = null;
 		try {
 			String hql = "";
 			if(nombre){
-				hql = "from Personas where nombre like '%"+cadena+"%'";
+				hql = "from Personas where nombre like '%"+cadena+"%' oder by nombre asc";
 			}else{
-				hql = "from Personas where idPersona in (Select personas.idPersona from Telefonos where telefono like '"+cadena+"%')";
+				hql = "from Personas where idPersona in (Select personas.idPersona from Telefonos where telefono like '"+cadena+"%') order by nombre asc";
 			}
 			
 			Query query = sessionFactory.getCurrentSession().createQuery(hql);
@@ -125,40 +125,25 @@ public class ContactDAO implements IContactDAO {
 	@Override
 	public Personas searchContact(int idContact) {
 
-		Personas contact = null;
-/*
+		List<Personas> listContact = null;
+		
 		try {
+				String hql = "from Personas where idPersona = "+idContact;		
+				Query query = sessionFactory.getCurrentSession().createQuery(hql);
+				
+				if(query.list() != null){
+					listContact = (List<Personas>)query.list();
+				}
 
-			ResultSet result = createStatement().executeQuery(
-					"select p.idPersona, p.nombre, p.apellido1, p.apellido2 ,p.dni, p.idEmpleado, p.idDireccion from personas p where p.idPersona = "
-							+ idContact + "; ");
-
-			contact = new Personas(result.getInt(0), result.getString(1), result.getString(2), result.getString(3),
-					result.getString(4), null);
-
-			// Query empleado
-			result = createStatement().executeQuery(
-					"select p.idPersona, p.nombre, p.apellido1, p.apellido2 ,p.dni, p.idEmpleado, p.idDireccion from personas p where p.idPersona = "
-							+ idContact + "; ");
-			contact = new Personas(result.getInt(0), result.getString(1), result.getString(2), result.getString(3),
-					result.getString(4), null);
-
-			result.beforeFirst();
-			// while (result.next()) {
-
-			System.out.println("Entra en result");
-
-			// }
 		} catch (Exception e) {
 			System.err.println("--- ERROR: Problem in ejecutaQuery");
 			System.err.println(e.getMessage());
 		}
-		if (contact == null)
-			System.out.println("No hay contacto");
+		
+		if (listContact != null){
+			return listContact.get(0);
+		}
 
-		// System.out.println("mi sql" + sql);
-		// return listContact;
-*/
 		return null;
 	}
 
