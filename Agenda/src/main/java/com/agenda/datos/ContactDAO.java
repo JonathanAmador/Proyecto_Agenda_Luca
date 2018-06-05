@@ -55,6 +55,12 @@ public class ContactDAO implements IContactDAO {
 				logger.info(listContact.get(i).getIdEmpleado().toString());
 			}
 		}
+<<<<<<< HEAD
+=======
+		System.out.println(listContact.get(0).getTelefonos().toString());
+
+
+>>>>>>> cb86bf041322d7a8d6886798a376efed57fa7c2c
 		
 		return listContact;
 		

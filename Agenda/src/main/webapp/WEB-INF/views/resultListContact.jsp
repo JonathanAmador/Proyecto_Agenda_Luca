@@ -134,17 +134,22 @@
 						<th>Categoría</th>
 
 					</tr>
-					<tr>
-						<c:forEach var="contact" items="${listContact}" varStatus="status">
+
+					<c:forEach var="contact" items="${listContact}" varStatus="status">
+						<tr>
 							<td>${contact.nombre}</td>
-							<td>${contact.apellido1}, ${contact.apellido2}</td>
-							<td>${contact.nombre}</td>
+							<td>${contact.apellido1},${contact.apellido2}</td>
+							<td><c:forEach  var="entry" items="${contact.telefonos}">
+    								 ${entry.telefono}<br>
+								</c:forEach> 
+							</td>
 							<td>${contact.idEmpleado.departamentos.nombre}</td>
-							<td>${contact.nombre }</td>
+							<td>${contact.idEmpleado.categorias.nombre }</td>
 							<td><a href="edit?id">Modificar</a></td>
 							<td><a href="deleted?id">Eliminar</a></td>
-						</c:forEach>
-					</tr>
+						</tr>
+					</c:forEach>
+
 
 
 
