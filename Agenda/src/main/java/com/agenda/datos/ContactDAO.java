@@ -55,15 +55,10 @@ public class ContactDAO implements IContactDAO {
 				logger.info(listContact.get(i).getIdEmpleado().toString());
 			}
 		}
-<<<<<<< HEAD
-=======
+		
 		System.out.println(listContact.get(0).getTelefonos().toString());
 
-
->>>>>>> cb86bf041322d7a8d6886798a376efed57fa7c2c
-		
-		return listContact;
-		
+		return listContact;	
 	}
 	
 //QUITAR METODO
@@ -75,7 +70,7 @@ public class ContactDAO implements IContactDAO {
 			if(nombre){
 				hql = "from Personas where nombre like '%"+cadena+"%'";
 			}else{
-				hql = "from Telefonos where telefono like '"+cadena+"%'";
+				hql = "from Personas where idPersona in (Select personas.idPersona from Telefonos where telefono like '"+cadena+"%')";
 			}
 			
 			Query query = sessionFactory.getCurrentSession().createQuery(hql);
