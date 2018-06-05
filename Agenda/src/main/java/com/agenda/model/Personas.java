@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -24,6 +25,10 @@ import javax.persistence.TemporalType;
 @Table(name = "personas", catalog = "agenda")
 public class Personas implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Integer idPersona;
 	private Direcciones direcciones;
 	private String nombre;
@@ -123,7 +128,7 @@ public class Personas implements java.io.Serializable {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idEmpleado", nullable = false)
 	public Empleados getIdEmpleado() {
 		return this.idEmpleado;
