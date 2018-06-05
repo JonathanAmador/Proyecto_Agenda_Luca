@@ -58,7 +58,7 @@ public class ContactDAO implements IContactDAO {
 			System.out.println(listContact.get(i).getIdEmpleado().toString());
 			}
 		}
-		System.out.println("PAsa for");
+		System.out.println(listContact.get(0).getTelefonos().toString());
 
 
 		

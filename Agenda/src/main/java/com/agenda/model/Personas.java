@@ -138,7 +138,11 @@ public class Personas implements java.io.Serializable {
 		this.idEmpleado = idEmpleado;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "personas")
+	/**
+	 * Tiene que ser EAGER PORQUE SI NO NO TE MUESTRA EL SET EN EL JSP
+	 * @return
+	 */
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "personas")
 	public Set<Telefonos> getTelefonos() {
 		return this.telefonos;
 	}
