@@ -44,22 +44,11 @@ public class ContactDAO implements IContactDAO {
 	public List<Personas> searchListContact() {
 		logger.info("Mostrando listado de personas");
 		Query query = sessionFactory.getCurrentSession().createQuery("from Personas");
-		// Query query = sessionFactory.getCurrentSession().createSQLQuery("select nombre from agenda.personas");
-		
-		//query.setResultTransformer(Transformers.aliasToBean(Contact.class)).list();
 
 		@SuppressWarnings("unchecked")
-		List<Personas> listContact = (ArrayList<Personas>) query.list();
+		List<Personas> listContact = (List<Personas>) query.list();
+
 		
-		if (listContact != null && !listContact.isEmpty()) {
-			System.out.println(listContact.get(0).toString());
-		}
-		//@SuppressWarnings("unchecked")
-		/*List<Contact> listContact = (List<Contact>) query.list();
-		List<Department> listUser = (List<Department>) query.list();
-		
-		 
-		return listContact;*/
 		return listContact;
 		
 	}
