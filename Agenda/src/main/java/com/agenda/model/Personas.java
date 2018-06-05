@@ -31,20 +31,20 @@ public class Personas implements java.io.Serializable {
 	private String apellido2;
 	private String dni;
 	private Date fechaNacimiento;
-	private int idEmpleado;
+	private Empleados idEmpleado;
 	private Set<Telefonos> telefonos = new HashSet<Telefonos>(0);
 
 	public Personas() {
 	}
 
-	public Personas(String nombre, String apellido1, int idEmpleado) {
+	public Personas(String nombre, String apellido1, Empleados idEmpleado) {
 		this.nombre = nombre;
 		this.apellido1 = apellido1;
 		this.idEmpleado = idEmpleado;
 	}
 
 	public Personas(Direcciones direcciones, String nombre, String apellido1, String apellido2, String dni,
-			Date fechaNacimiento, int idEmpleado, Set<Telefonos> telefonos) {
+			Date fechaNacimiento, Empleados idEmpleado, Set<Telefonos> telefonos) {
 		this.direcciones = direcciones;
 		this.nombre = nombre;
 		this.apellido1 = apellido1;
@@ -123,12 +123,13 @@ public class Personas implements java.io.Serializable {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
-	@Column(name = "idEmpleado", nullable = false)
-	public int getIdEmpleado() {
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "idEmpleado", nullable = false)
+	public Empleados getIdEmpleado() {
 		return this.idEmpleado;
 	}
 
-	public void setIdEmpleado(int idEmpleado) {
+	public void setIdEmpleado(Empleados idEmpleado) {
 		this.idEmpleado = idEmpleado;
 	}
 
