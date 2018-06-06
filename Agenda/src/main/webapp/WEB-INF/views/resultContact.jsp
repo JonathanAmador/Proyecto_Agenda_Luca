@@ -116,14 +116,11 @@
 				<!-- home slick -->
 
 				<!-- BREADCRUMB -->
-				<!-- Search -->
 				<div class="header-search">
 					<form method="post" commandName="persona" action="showListContact">
-						<input name="consulta" class="input search-input" type="text"
+						<input  name="consulta" class="input search-input" type="text"
 							placeholder="Introduce el nombre del contacto" size="100">
-						<button type="submit" class="search-btn" value="buscar">
-							<a class="buscar"> Buscar</a>
-						</button>
+						<button type="submit" class="search-btn" value="buscar"><a class="buscar"> Buscar</a></button>
 					</form>
 				</div>
 				<!-- /Search -->

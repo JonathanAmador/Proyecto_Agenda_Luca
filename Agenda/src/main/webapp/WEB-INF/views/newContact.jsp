@@ -1,6 +1,11 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+ 
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,59 +32,212 @@
 
 
 </head>
-<body>
 
-	<!-- Navbar -->
-	<nav class="navbar navbar-default">
-		<div class="container">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="#">Me</a>
-			</div>
-			<div class="collapse navbar-collapse" id="myNavbar">
-				<ul class="nav navbar-nav navbar-right">
-					<li><form>Ver Contactos: no funcional</form></li>
-					<li>OPCION3</li>
-					<li>OPCION2</li>
-				</ul>
+<body>
+	<!-- HEADER -->
+	<header>
+		<!-- top Header -->
+		<div id="top-header">
+			<div class="container">
+				<div class="pull-left">
+					<span>Proyecto Spring Java</span>
+				</div>
+
 			</div>
 		</div>
-	</nav>
+		<!-- /top Header -->
 
-	<!-- First Container -->
-		<div align="center">
-		<h1>FORMULARIO DE USUARIOS (add/edit)</h1>
-		<table>
-			<form:form action="save" method="post" modelAttribute="user">
-				
-				<form:hidden path="idPersona" />
-				<tr>
-					<td>Usuario:</td>
-					<td><form:input path="nombre" /></td>
-				</tr>
-				<tr>
-					<td>Apellidos:</td>
-					<td><form:input path="Apellido1" /></td>
-				</tr>
-				<tr>
-					<td>DNI:</td>
-					<td><form:password path="dni" /></td>
-				</tr>
-				<tr>
-					<td colspan="2" align="center"><input type="submit"
-						value="Guardar Registro"></td>
-				</tr>
-			</form:form>
-		</table>
+		<!-- header -->
+		<div id="header">
+			<div class="container">
+				<div class="pull-left">
+					<!-- Logo -->
+					<div class="header-logo">
+						<a class="logo" href="#">
+							<h1>Agenda de contactos</h1>
+						</a>
+					</div>
+					<!-- /Logo -->
+				</div>
+			</div>
+			<!-- header -->
+		</div>
+		<!-- container -->
+	</header>
+	<!-- /HEADER -->
+
+	<!-- NAVIGATION -->
+	<div id="navigation">
+		<!-- container -->
+		<div class="container">
+			<div id="responsive-nav">
+				<!-- category nav -->
+				<div class="category-nav">
+					<span class="category-header">Categorias <i class="fa fa-list"></i></span>
+					<form method="POST" action="FilmListSelect.do">
+					<ul class="category-list">
+						
+						
+						<li>
+                            <a href="#">Programador</a>
+						
+
+						</li>
+						<li>
+
+						<a href="#">Analísta</a>
+
+						</li>
+						<li >
+
+						<a href="#">Técnico Recursos Humanos</a>
+
+						</li>
+						<li>
+                        <a href="#">Secretaria</a>
+
+						</li>
+						<li>
+
+						<a href="#">Recepcionista</a>
+
+						</li>
+						<li>
+						<a href="#">Master del Universo</a>
+
+						</li>
+							
+					</ul>
+					</form>
+				</div>
+				<!-- /category nav -->
+
+				<!-- menu nav -->
+				<div class="menu-nav">
+					<span class="menu-header">Menu <i class="fa fa-bars"></i></span>
+					<ul class="menu-list">
+						<li><a href="new">Nuevo contacto</a></li>
+						<li><a href="lista">Lista de Contactos</a></li>
+						
+					</ul>
+				</div>
+				<!-- menu nav -->
+			</div>
+		</div>
+		<!-- /container -->
 	</div>
+	<!-- /NAVIGATION -->
+
+	<!-- HOME -->
+	<div id="home">
+		<!-- container -->
+		<div class="container">
+			<!-- home wrap -->
+			<div class="home-wrap">
+				<!-- home slick -->
+				
+				<!-- BREADCRUMB -->
+	<div class="header-search">
+					<form method="post" commandName="persona" action="showListContact">
+						<input  name="consulta" class="input search-input" type="text"
+							placeholder="Introduce el nombre del contacto" size="100">
+						<button type="submit" class="search-btn" value="buscar"><a class="buscar"> Buscar</a></button>
+					</form>
+				</div>
+	<!-- /BREADCRUMB -->
+            <h1>Nuevo Usuario</h1>
+				
+        <form:form method="post" commandName="cliente" action="addCliente.htm">
+                <table>
+                    <tr>
+                        <td><form:label path="nombre">Nombre</form:label></td>
+                        <td><form:input path="nombre" /></td>
+                    </tr>
+                    <tr>
+                        <td><form:label path="apellido">Apellido</form:label></td>
+                        <td><form:input path="apellido" /></td>
+                    </tr>
+                    <tr>
+                        <td><form:label path="apellido1">Fecha de nacimiento</form:label></td>
+                        <td><form:input path="apellido1" /></td>
+                    </tr>
+                    <tr>
+                        <td><form:label path="apellido2">DNI</form:label></td>
+                        <td><form:input path="apellido2" /></td>
+                    </tr>
+                    <tr>
+                        <td><form:label path="telefonos">No. Telefono</form:label></td>
+                        <td><form:input path="telefonos" /></td>
+                    </tr>  
+                    <tr>
+                        <td><form:label path="departamento">Departamento</form:label></td>
+                        <td><form:input path="departamento" /></td>
+                    </tr>  
+                    <tr>
+                        <td><form:label path="categoria">Categoria</form:label></td>
+                        <td><form:input path="categoria" /></td>
+                    </tr>                    
+                </table>
+                <br />
+                <p><input type="submit" value="Dar de alta" /></p>
+            </form:form>
+         
+         
+				
+				<!-- /home slick -->
+			</div>
+			<!-- /home wrap -->
+		</div>
+		<!-- /container -->
+	</div>
+	<!-- /HOME -->
+
+	<!-- section -->
+	<div class="section">
+		<!-- container -->
+		<div class="container">
+			<!-- row -->
+			<div class="row">
+				
+
+				
 
 
+			</div>
+			<!-- /row -->
+		</div>
+		<!-- /container -->
+	</div>
+	
 
-	<!-- Footer -->
-	<footer class="container-fluid bg-4 text-center">
-		<p>
-			Referencia <a href="https://www.w3schools.com">www.w3schools.com</a>
-		</p>
+	<!-- FOOTER -->
+	<footer id="footer" class="section section-grey">
+		<!-- container -->
+		<div class="container">
+			<!-- row -->
+			<div class="row">
+
+			</div>
+			<!-- /row -->
+			<hr>
+			<!-- row -->
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center">
+					<!-- footer copyright -->
+					<div class="footer-copyright">
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos derechos reservados | por <a href="https://colorlib.com" target="_blank">Grupo A LucaTic</a>
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+					</div>
+					<!-- /footer copyright -->
+				</div>
+			</div>
+			<!-- /row -->
+		</div>
+		<!-- /container -->
 	</footer>
+	<!-- /FOOTER -->
 
 </body>
+
 </html>
