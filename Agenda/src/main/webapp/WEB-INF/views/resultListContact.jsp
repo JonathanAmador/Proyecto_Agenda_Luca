@@ -7,25 +7,29 @@
 <html lang="en">
 
 <head>
-<meta charset="utf-8">
+
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
 <title>Agenda de contactos LucaTic</title>
+ 
+<spring:url value="/https://fonts.googleapis.com/css?family=Hind:400,700" var="fonts" />
+<link href="${fonts}" rel="stylesheet" />
 
-<!-- Google font -->
-<link href="https://fonts.googleapis.com/css?family=Hind:400,700"
-	rel="stylesheet">
+<spring:url value="/static/css/bootstrap.min.css" var="estilos1" />
+<link href="${estilos1}" rel="stylesheet" />
 
-<!-- Bootstrap -->
-<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+<spring:url value="static/css/style.css" var="style" />
+<link href="${style}" rel="stylesheet" />
 
-<!-- Font Awesome Icon -->
-<link rel="stylesheet" href="css/font-awesome.min.css">
+<spring:url value="css/bootstrap.min.css" var="estilos2" />
+<link href="${estilos2}" rel="stylesheet" />
 
-<!-- Custom stlylesheet -->
-<link type="text/css" rel="stylesheet" href="css/style.css" />
+<link href="<c:url value='/resources/css/style.css' />" rel="stylesheet"></link>
+
+
 
 </head>
 

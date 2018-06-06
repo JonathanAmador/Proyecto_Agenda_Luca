@@ -2,21 +2,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<spring:url value="/resources/css/estilos.css" var="estilos" />
-<link href="${estilos}" rel="stylesheet" />
-<!-- Theme Made By www.w3schools.com - No Copyright -->
-<title>Bootstrap Theme Simply Me</title>
-<meta charset="utf-8">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link href="https://fonts.googleapis.com/css?family=Montserrat"
-	rel="stylesheet">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<meta charset="utf-8">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+<title>Agenda de contactos LucaTic</title>
+ 
+<spring:url value="/https://fonts.googleapis.com/css?family=Hind:400,700" var="fonts" />
+<link href="${fonts}" rel="stylesheet" />
+
+<spring:url value="/static/css/bootstrap.min.css" var="estilos1" />
+<link href="${estilos1}" rel="stylesheet" />
+
+<spring:url value="static/css/style.css" var="style" />
+<link href="${style}" rel="stylesheet" />
+
+<spring:url value="css/bootstrap.min.css" var="estilos2" />
+<link href="${estilos2}" rel="stylesheet" />
+
+<link href="<c:url value='/resources/css/style.css' />" rel="stylesheet"></link>
+
+
 
 </head>
 <body>
