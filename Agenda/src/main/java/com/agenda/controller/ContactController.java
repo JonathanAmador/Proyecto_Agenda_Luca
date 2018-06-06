@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +22,7 @@ public class ContactController { // SearchListContact
 	@Autowired
 	private IContactServices contactServices;
 	
-	
+	private static final Logger logger = LoggerFactory.getLogger("ContactController");
 
 	@RequestMapping("/")
 	public ModelAndView handlesRequest() throws Exception {
@@ -54,6 +56,8 @@ public class ContactController { // SearchListContact
 		List<Personas> listContact = contactServices.searchListContact(cadena);
 		System.out.println("PASO 2 filtrado");
 		ModelAndView model = new ModelAndView("resultListContact");
+		
+		logger.info("Contacto1:"+listContact.get(0).toString());
 		System.out.println("PASO 3 filtrado");
 		model.addObject("listContact", listContact);
 		System.out.println("PASO 4 flitrado");
@@ -62,11 +66,13 @@ public class ContactController { // SearchListContact
 	
 	@RequestMapping(value="/showCategory", method = RequestMethod.GET)
 	public ModelAndView ListContactCategory(HttpServletRequest request) throws Exception {
-		String categoria = request.getParameter("categoria");
+		String id = request.getParameter("id");
 		
-		List<Personas> listContact = contactServices.searchListCategory(categoria);
+		List<Personas> listContact = contactServices.searchListCategory(id);
 		
 		ModelAndView model = new ModelAndView("resultListContact");
+		
+		logger.info("Contacto1:"+listContact.get(0).toString());
 		
 		model.addObject("listContact", listContact);
 		

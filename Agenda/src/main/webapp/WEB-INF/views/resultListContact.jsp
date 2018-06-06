@@ -75,11 +75,11 @@
 				<div class="category-nav">
 					<span class="category-header">Categorias <i
 						class="fa fa-list"></i></span>
-					<form method="POST" action="FilmListSelect.do">
+					
 						<ul class="category-list">
 
 
-							<li><a href="showCategory?id=1">Programador</a></li>
+							<li><a href="showCategory?id=programador">Programador</a></li>
 							<li><a href="showCategory?id=2">Analísta</a></li>
 							<li><a href="showCategory?id=3">Técnico Recursos Humanos</a></li>
 							<li><a href="showCategory?id=4">Secretaria</a></li>
@@ -87,7 +87,7 @@
 							<li><a href="showCategory?id=6">Master del Universo</a></li>
 
 						</ul>
-					</form>
+					
 				</div>
 				<!-- /category nav -->
 
