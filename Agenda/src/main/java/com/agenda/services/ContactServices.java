@@ -43,4 +43,9 @@ public class ContactServices implements IContactServices {
 	public void delete(int idContact){
 		contactDao.delete(idContact);
 	}
+
+	@Override
+	public List<Personas> searchListCategory(String sql) {
+		return contactDao.searchListCategory(sql);
+	}
 }
