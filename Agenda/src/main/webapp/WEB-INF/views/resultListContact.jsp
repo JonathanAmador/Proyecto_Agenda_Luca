@@ -100,7 +100,7 @@
 					<span class="menu-header">Menu <i class="fa fa-bars"></i></span>
 					<ul class="menu-list">
 						<li><a href="new">Nuevo contacto</a></li>
-						<li><a href="lista">Lista de Contactos</a></li>
+						<li><a href="listar">Lista de Contactos</a></li>
 
 					</ul>
 				</div>
