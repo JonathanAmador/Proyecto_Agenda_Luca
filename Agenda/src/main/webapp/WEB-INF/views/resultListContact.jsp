@@ -120,7 +120,7 @@
 					<form method="post" commandName="persona" action="showListContact">
 						<input  name="consulta" class="input search-input" type="text"
 							placeholder="Introduce el nombre del contacto" size="100">
-						<input type="submit" value="buscar" />
+						<button type="submit" class="search-btn" value="buscar"><a class="buscar"> Buscar</a></button>
 					</form>
 				</div>
 				<!-- /Search -->
