@@ -1,8 +1,8 @@
-<!-- 
+ 
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
--->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -72,42 +72,21 @@
 		<div class="container">
 			<div id="responsive-nav">
 				<!-- category nav -->
-				<div class="category-nav">
-					<span class="category-header">Categorias <i class="fa fa-list"></i></span>
+				div class="category-nav">
+					<span class="category-header">Categorias <i
+						class="fa fa-list"></i></span>
 					<form method="POST" action="FilmListSelect.do">
-					<ul class="category-list">
-						
-						
-						<li>
-                            <a href="#">Programador</a>
-						
+						<ul class="category-list">
 
-						</li>
-						<li>
 
-						<a href="#">Analísta</a>
+							<li><a href="showCategory?id=1">Programador</a></li>
+							<li><a href="showCategory?id=2">Analísta</a></li>
+							<li><a href="showCategory?id=3">Técnico Recursos Humanos</a></li>
+							<li><a href="showCategory?id=4">Secretaria</a></li>
+							<li><a href="showCategory?id=5">Recepcionista</a></li>
+							<li><a href="showCategory?id=6">Master del Universo</a></li>
 
-						</li>
-						<li >
-
-						<a href="#">Técnico Recursos Humanos</a>
-
-						</li>
-						<li>
-                        <a href="#">Secretaria</a>
-
-						</li>
-						<li>
-
-						<a href="#">Recepcionista</a>
-
-						</li>
-						<li>
-						<a href="#">Master del Universo</a>
-
-						</li>
-							
-					</ul>
+						</ul>
 					</form>
 				</div>
 				<!-- /category nav -->
@@ -117,7 +96,8 @@
 					<span class="menu-header">Menu <i class="fa fa-bars"></i></span>
 					<ul class="menu-list">
 						<li><a href="new">Nuevo contacto</a></li>
-						
+						<li><a href="lista">Lista de Contactos</a></li>
+
 					</ul>
 				</div>
 				<!-- menu nav -->
@@ -134,42 +114,90 @@
 			<!-- home wrap -->
 			<div class="home-wrap">
 				<!-- home slick -->
-				
+
+				<!-- BREADCRUMB -->
+				<div class="header-search">
+					<form method="post" commandName="persona" action="showListContact">
+						<input  name="consulta" class="input search-input" type="text"
+							placeholder="Introduce el nombre del contacto" size="100">
+						<button type="submit" class="search-btn" value="buscar"><a class="buscar"> Buscar</a></button>
+					</form>
+				</div>
+				<!-- /Search -->
+				<!-- /BREADCRUMB -->
+				<h1>DATOS DE USUARIO</h1>
 				<div align="center">
-		<h1>FORMULARIO DE USUARIOS (add/edit)</h1>
-		<table>
-			<form:form action="save" method="post" modelAttribute="contact">
-				
-				<form:hidden path="idPersona" />
-				<tr>
-					<td>Usuario:</td>
-					<td><form:input path="nombre" /></td>
-				</tr>
-				<tr>
-					<td>Apellidos:</td>
-					<td><form:input path="Apellido1" /></td>
-				</tr>
-				<tr>
-					<td>DNI:</td>
-					<td><form:password path="dni" /></td>
-				</tr>
-				<tr>
-					<td colspan="2" align="center"><input type="submit"
-						value="Guardar Registro"></td>
-				</tr>
-			</form:form>
-		</table>
+
+
+					<form:form>
+						<table style="width: 100%">
+							<c:forEach var="contact" items="$${contact}" varStatus="status">
+								<tr>
+									<th>Nombre</th>
+									<td>${Contact.name}</td>
+								</tr>
+								<tr>
+									<th>Apellidos</th>
+									<td>${Contact.surname}${contact.surname2}</td>
+								</tr>
+								<tr>
+									<th>Fecha de nacimiento</th>
+									<td>${Contact.dob}</td>
+								</tr>
+								<tr>
+									<th>DNI</th>
+									<td>${Contact.dni}</td>
+								</tr>
+								<tr>
+									<th>Teléfono</th>
+									<td><c:forEach var="contact" items="${contact.phones}"
+											varStatus="status">
+		${contact.phone}<br>
+										</c:forEach></td>
+								</tr>
+								<tr>
+									<th>Departamento</th>
+									<td>${contact.department.nameDepartment}</td>
+								</tr>
+								<tr>
+									<th>Categoría</th>
+									<td>${contact.category.name }</td>
+								</tr>
+							</c:forEach>
+						</table>
+
+					</form:form>
+
+				</div>
+
+
+
+				<!-- /home slick -->
+			</div>
+			<!-- /home wrap -->
+		</div>
+		<!-- /container -->
+	</div>
+	<!-- /HOME -->
+
+	<!-- section -->
+	<div class="section">
+		<!-- container -->
+		<div class="container">
+			<!-- row -->
+			<div class="row"></div>
+			<!-- /row -->
+		</div>
+		<!-- /container -->
 	</div>
 
 
-				<!-- FOOTER -->
+	<!-- FOOTER -->
 	<footer id="footer" class="section section-grey">
 		<!-- container -->
 		<div class="container">
 			<!-- row -->
-			<div class="row">
-
-			</div>
+			<div class="row"></div>
 			<!-- /row -->
 			<hr>
 			<!-- row -->
@@ -178,7 +206,12 @@
 					<!-- footer copyright -->
 					<div class="footer-copyright">
 						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-						Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos derechos reservados | por <a href="https://colorlib.com" target="_blank">Grupo A LucaTic</a>
+						Copyright &copy;
+						<script>
+							document.write(new Date().getFullYear());
+						</script>
+						Todos derechos reservados | por <a href="https://colorlib.com"
+							target="_blank">Grupo A LucaTic</a>
 						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 					</div>
 					<!-- /footer copyright -->
