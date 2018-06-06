@@ -1,7 +1,7 @@
 
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,8 +14,10 @@
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
 <title>Agenda de contactos LucaTic</title>
- 
-<spring:url value="/https://fonts.googleapis.com/css?family=Hind:400,700" var="fonts" />
+
+<spring:url
+	value="/https://fonts.googleapis.com/css?family=Hind:400,700"
+	var="fonts" />
 <link href="${fonts}" rel="stylesheet" />
 
 <spring:url value="/static/css/bootstrap.min.css" var="estilos1" />
@@ -56,8 +58,9 @@
 							<h1>Agenda de contactos</h1>
 						</a>
 					</div>
-					
-					<img alt="" src="http://www.apexunderwriting.com/images/inner-banner-6.jpg">
+
+					<img alt=""
+						src="http://www.apexunderwriting.com/images/inner-banner-6.jpg">
 					<!-- /Logo -->
 				</div>
 			</div>
@@ -76,19 +79,19 @@
 				<div class="category-nav">
 					<span class="category-header">Categorias <i
 						class="fa fa-list"></i></span>
-					
-						<ul class="category-list">
+
+					<ul class="category-list">
 
 
-							<li><a href="showCategory?id=1">Programador</a></li>
-							<li><a href="showCategory?id=2">Analísta</a></li>
-							<li><a href="showCategory?id=3">Técnico Recursos Humanos</a></li>
-							<li><a href="showCategory?id=4">Secretaria</a></li>
-							<li><a href="showCategory?id=5">Recepcionista</a></li>
-							<li><a href="showCategory?id=6">Master del Universo</a></li>
+						<li><a href="showCategory?id=1">Programador</a></li>
+						<li><a href="showCategory?id=2">Analísta</a></li>
+						<li><a href="showCategory?id=3">Técnico Recursos Humanos</a></li>
+						<li><a href="showCategory?id=4">Secretaria</a></li>
+						<li><a href="showCategory?id=5">Recepcionista</a></li>
+						<li><a href="showCategory?id=6">Master del Universo</a></li>
 
-						</ul>
-					
+					</ul>
+
 				</div>
 				<!-- /category nav -->
 
@@ -97,6 +100,7 @@
 					<span class="menu-header">Menu <i class="fa fa-bars"></i></span>
 					<ul class="menu-list">
 						<li><a href="new">Nuevo contacto</a></li>
+						<li><a href="lista">Lista de Contactos</a></li>
 
 					</ul>
 				</div>
@@ -119,14 +123,16 @@
 				<!-- Search -->
 				<div class="header-search">
 					<form method="post" commandName="persona" action="showListContact">
-						<input  name="consulta" class="input search-input" type="text"
+						<input name="consulta" class="input search-input" type="text"
 							placeholder="Introduce el nombre del contacto" size="100">
-						<button type="submit" class="search-btn" value="buscar"><a class="buscar"> Buscar</a></button>
+						<button type="submit" class="search-btn" value="buscar">
+							<a class="buscar"> Buscar</a>
+						</button>
 					</form>
 				</div>
 				<!-- /Search -->
-				
-				
+
+
 				<!-- /BREADCRUMB -->
 				<h1>Lista de contactos</h1>
 
@@ -145,10 +151,9 @@
 						<tr>
 							<td>${contact.nombre}</td>
 							<td>${contact.apellido1},${contact.apellido2}</td>
-							<td><c:forEach  var="entry" items="${contact.telefonos}">
+							<td><c:forEach var="entry" items="${contact.telefonos}">
     								 ${entry.telefono}<br>
-								</c:forEach> 
-							</td>
+								</c:forEach></td>
 							<td>${contact.idEmpleado.departamentos.nombre}</td>
 							<td>${contact.idEmpleado.categorias.nombre }</td>
 							<td><a href="edit?id=${contact.idPersona}">Modificar</a></td>

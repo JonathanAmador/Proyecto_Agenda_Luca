@@ -169,12 +169,12 @@
 						<tr>
 							<td><form:label path="categoria">Categoria</form:label>
 							<select name="categorias">
-								<option value="new?id=programador">Programador</option>
-								<option value="new?id=analista">Analísta</option>
-								<option value="new?id=tecnico">Técnico Recursos Humanos</option>
-								<option value="new?id=recretaria">Secretaria</option>
-								<option value="new?id=recepcionista">Recepcionista</option>
-								<option value="new?id=master">Master del Universo</option>
+								<option value="newContact?id=programador">Programador</option>
+								<option value="newContact?id=analista">Analísta</option>
+								<option value="newContact?id=tecnico">Técnico Recursos Humanos</option>
+								<option value="newContact?id=recretaria">Secretaria</option>
+								<option value="newContact?id=recepcionista">Recepcionista</option>
+								<option value="newContact?id=master">Master del Universo</option>
 							</select></td>
 							<td><form:input path="categoria" /></td>
 						</tr>
