@@ -27,7 +27,7 @@ public class ContactDAO implements IContactDAO {
 	@Autowired
 	private SessionFactory sessionFactory;
 
-	private static final Logger logger = LoggerFactory.getLogger("ContacDAO");
+	private static final Logger logger = LoggerFactory.getLogger("ContactDAO");
 
 	public ContactDAO() {
 	}
