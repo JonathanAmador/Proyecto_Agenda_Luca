@@ -113,12 +113,10 @@
 				<!-- BREADCRUMB -->
 				<!-- Search -->
 				<div class="header-search">
-					<form>
+					<form method="post" commandName="persona" action="showListContact">
 						<input class="input search-input" type="text"
 							placeholder="Introduce el nombre del contacto" size="100">
-						<button class="search-btn">
-							<i class="fa fa-search"></i>
-						</button>
+						<input type="submit" value="buscar" />
 					</form>
 				</div>
 				<!-- /Search -->

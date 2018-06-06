@@ -45,7 +45,7 @@ public class ContactController { // SearchListContact
 		
 	}
 	
-	@RequestMapping("/showListContact")
+	@RequestMapping(value="/showListContact", method = RequestMethod.POST)
 	public ModelAndView listContactFilter() throws Exception {
 		System.out.println("PASO 1 filtrado");
 		List<Personas> listContact = contactServices.searchListContact("SQL");

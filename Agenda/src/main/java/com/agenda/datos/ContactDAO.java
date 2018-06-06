@@ -63,7 +63,8 @@ public class ContactDAO implements IContactDAO {
 	
 
 	public List<Personas> searchListContact(String cadena) {
-		boolean nombre =false;
+		boolean nombre =true;
+		//Realizar metodo de comprobacion
 		List<Personas> listContact = null;
 		try {
 			String hql = "";
