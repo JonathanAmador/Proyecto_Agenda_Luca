@@ -59,7 +59,7 @@ public class Empleados implements java.io.Serializable {
 		this.idEmpleado = idEmpleado;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idCategoria")
 	public Categorias getCategorias() {
 		return this.categorias;
@@ -69,7 +69,7 @@ public class Empleados implements java.io.Serializable {
 		this.categorias = categorias;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idDepartamento")
 	public Departamentos getDepartamentos() {
 		return this.departamentos;

@@ -4,6 +4,8 @@ package com.agenda.model;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -128,7 +130,7 @@ public class Personas implements java.io.Serializable {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne( fetch = FetchType.EAGER, cascade =CascadeType.ALL)
 	@JoinColumn(name = "idEmpleado", nullable = false)
 	public Empleados getIdEmpleado() {
 		return this.idEmpleado;
