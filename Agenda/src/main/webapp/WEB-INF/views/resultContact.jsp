@@ -130,22 +130,31 @@
 			<div class="home-wrap">
 				<!-- home slick -->
 				
-				<h1>Lista de contactos</h1>
-
-				<table>
-					<tr>
-						<th>Nombre: ${contact.nombre}</th>
-						<th>Apellidos</th>
-						<th>Teléfono</th>
-						<th>Departamento</th>
-						<th>Categoría</th>
-
-					</tr>
-					
-
-
-
-				</table>
+				<div align="center">
+		<h1>FORMULARIO DE USUARIOS (add/edit)</h1>
+		<table>
+			<form:form action="save" method="post" modelAttribute="contact">
+				
+				<form:hidden path="idPersona" />
+				<tr>
+					<td>Usuario:</td>
+					<td><form:input path="nombre" /></td>
+				</tr>
+				<tr>
+					<td>Apellidos:</td>
+					<td><form:input path="Apellido1" /></td>
+				</tr>
+				<tr>
+					<td>DNI:</td>
+					<td><form:password path="dni" /></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center"><input type="submit"
+						value="Guardar Registro"></td>
+				</tr>
+			</form:form>
+		</table>
+	</div>
 
 
 				<!-- FOOTER -->
