@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -33,6 +34,18 @@ public class ContactController { // SearchListContact
 		System.out.println("PASO 3");
 		model.addObject("listContact", listContact);
 		System.out.println("PASO 4");
+		return model;
+	}
+	
+	@GetMapping(value="/listar")
+	public ModelAndView listar() throws Exception {
+		
+		List<Personas> listContact = contactServices.searchListContact();
+		
+		ModelAndView model = new ModelAndView("resultListContact");
+		
+		model.addObject("listContact", listContact);
+		
 		return model;
 	}
 	
