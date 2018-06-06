@@ -23,7 +23,7 @@ public class Departamentos implements java.io.Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private Integer iddepartamento;
+	private int iddepartamento;
 	private String nombre;
 	private Set<Empleados> empleados = new HashSet<Empleados>(0);
 

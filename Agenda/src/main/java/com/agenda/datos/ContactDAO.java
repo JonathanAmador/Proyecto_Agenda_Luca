@@ -63,7 +63,7 @@ public class ContactDAO implements IContactDAO {
 		boolean numero = true;
 		System.out.println("cadena en dao:"+cadena);
 		numero = checkNumero(cadena);
-		// Realizar metodo de comprobacion
+
 		List<Personas> listContact = null;
 		try {
 			String hql = "";
@@ -227,21 +227,13 @@ public class ContactDAO implements IContactDAO {
 	public List<Personas> searchListCategory(String cadena) {
 		
 		System.out.println("cadena en dao:"+cadena);
-		String hql = "from Personas where idPersona in (Select personas.idPersona from Empleados in "
-				+ "(Select Empleados.idCategoria where nombre like '"
-						+ cadena + "%')) order by nombre asc";
+		String hql = "from Personas where idEmpleado in (Select idEmpleado from Empleados e where categorias in "
+				+ "(Select idcategorias from Categorias where nombre = '"
+						+ cadena + "')) order by nombre asc";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 
 		@SuppressWarnings("unchecked")
 		List<Personas> listContact = (List<Personas>) query.list();
-
-		for (int i = 0; i < listContact.size(); i++) {
-			if (listContact.get(i).toString() != null) {
-				logger.info(listContact.get(i).getIdEmpleado().toString());
-			}
-		}
-
-		System.out.println(listContact.get(0).getTelefonos().toString());
 
 		return listContact;
 	}

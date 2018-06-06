@@ -23,7 +23,7 @@ public class Categorias implements java.io.Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private Integer idcategorias;
+	private int idcategorias;
 	private String nombre;
 	private String descripcion;
 	private Set<Empleados> empleadoses = new HashSet<Empleados>(0);
