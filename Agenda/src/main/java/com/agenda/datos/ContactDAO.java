@@ -53,7 +53,7 @@ public class ContactDAO implements IContactDAO {
 			}
 		}
 
-		System.out.println(listContact.get(0).getTelefonos().toString());
+		logger.info(listContact.get(0).getTelefonos().toString());
 
 		return listContact;
 	}
@@ -61,7 +61,7 @@ public class ContactDAO implements IContactDAO {
 	public List<Personas> searchListContact(String cadena) {
 
 		boolean numero = true;
-		System.out.println("cadena en dao:"+cadena);
+		logger.info("cadena en dao:"+cadena);
 		numero = checkNumero(cadena);
 
 		List<Personas> listContact = null;
@@ -70,7 +70,7 @@ public class ContactDAO implements IContactDAO {
 			if (numero) {
 				hql = "from Personas where idPersona in (Select personas.idPersona from Telefonos where telefono like ':cadena%') order by nombre asc";
 			} else {
-				System.out.println("No es un número");
+				logger.info("No es un nï¿½mero");
 				hql = "from Personas where nombre like '%:cadena%' order by nombre asc";
 			}
 			
@@ -87,11 +87,11 @@ public class ContactDAO implements IContactDAO {
 			}
 
 		} catch (Exception e) {
-			System.err.println("--- ERROR: Problem in ejecutaQuery");
-			System.err.println(e.getMessage());
+			logger.error("--- ERROR: Problem in ejecutaQuery");
+			logger.error(e.getMessage());
 		}
 		if (listContact == null)
-			System.out.println("Vacia");
+			logger.trace("Vacia");
 
 		return listContact;
 	}
@@ -126,7 +126,7 @@ public class ContactDAO implements IContactDAO {
 			st = conn.createStatement();
 
 		} catch (Exception e) {
-			System.err.println("--- ERROR: Hay una excepcion");
+			logger.error("--- ERROR: Hay una excepcion");
 			e.printStackTrace();
 			System.exit(0);
 		}
@@ -147,8 +147,8 @@ public class ContactDAO implements IContactDAO {
 			}
 
 		} catch (Exception e) {
-			System.err.println("--- ERROR: Problem in ejecutaQuery");
-			System.err.println(e.getMessage());
+			logger.error("--- ERROR: Problem in ejecutaQuery");
+			logger.error(e.getMessage());
 		}
 
 		if (listContact != null) {
@@ -173,7 +173,7 @@ public class ContactDAO implements IContactDAO {
 			}
 		}
 
-		System.out.println(listContact.get(0).getTelefonos().toString());
+		logger.info(listContact.get(0).getTelefonos().toString());
 
 		return listContact.get(0);
 		/*
@@ -225,7 +225,7 @@ public class ContactDAO implements IContactDAO {
 	@Override
 	public List<Personas> searchListCategory(String cadena) {
 		
-		System.out.println("cadena en dao:"+cadena);
+		logger.info("cadena en dao:"+cadena);
 		String hql = "from Personas where idEmpleado in (Select idEmpleado from Empleados e where categorias in "
 				+ "(Select idcategorias from Categorias where nombre = '"
 						+ cadena + "')) order by nombre asc";
