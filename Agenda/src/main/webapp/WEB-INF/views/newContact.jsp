@@ -143,10 +143,7 @@
 							<td><form:label path="apellido1">Apellido1</form:label></td>
 							<td><form:input path="apellido1" /></td>
 						</tr>
-						<tr>
-							<td><form:label path="idEmpleado">idEmpleado</form:label></td>
-							<td><form:input path="idEmpleado" /></td>
-						</tr>
+						
 						
 					<!-- <tr>
 							<td><form:label path="apellido2">Apellido2</form:label></td>
@@ -163,7 +160,7 @@
 						<tr>
 							<td><form:label path="fechaNacimiento">fechaNacimiento</form:label></td>
 							<td><form:input path="fechaNacimiento" /></td>
-						</tr>
+						</tr>-->
 						<tr>
 							<td>
 							<select name="departamentos">
@@ -184,7 +181,7 @@
 								<option value="5">Recepcionista</option>
 								<option value="6">Master del Universo</option>
 							</select></td>
-						</tr>-->
+						</tr>
 					</table>
 					<br />
 					

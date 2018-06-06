@@ -126,6 +126,7 @@ public class ContactController { // SearchListContact
 	
 	@RequestMapping(value ="/save", method = RequestMethod.POST)
 	public ModelAndView saveUser(@ModelAttribute Personas contact) {
+		logger.info("Guardando persona");
 		contactServices.saveOrUpdate(contact);
 		return new ModelAndView("redirect:/");
 	}

@@ -131,7 +131,7 @@ public class Personas implements java.io.Serializable {
 	}
 
 	@OneToOne( fetch = FetchType.EAGER, cascade =CascadeType.ALL)
-	@JoinColumn(name = "idEmpleado", nullable = false)
+	@JoinColumn(name = "idEmpleado", nullable = true)
 	public Empleados getIdEmpleado() {
 		return this.idEmpleado;
 	}
