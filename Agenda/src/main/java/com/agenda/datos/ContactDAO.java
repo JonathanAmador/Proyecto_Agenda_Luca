@@ -74,7 +74,8 @@ public class ContactDAO implements IContactDAO {
 				System.out.println("No es un número");
 				hql = "from Personas where nombre like '%"+cadena+"%' order by nombre asc";
 			}
-
+			
+			
 			Query query = sessionFactory.getCurrentSession().createQuery(hql);
 			if (query.list() != null) {
 				listContact = (List<Personas>) query.list();

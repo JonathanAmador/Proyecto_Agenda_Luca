@@ -51,7 +51,7 @@ public class ContactController { // SearchListContact
 		String cadena = request.getParameter("consulta");
 		
 		System.out.println("PASO 1: busqueda:"+cadena);
-		List<Personas> listContact = contactServices.searchListCategory(cadena);
+		List<Personas> listContact = contactServices.searchListContact(cadena);
 		System.out.println("PASO 2 filtrado");
 		ModelAndView model = new ModelAndView("resultListContact");
 		System.out.println("PASO 3 filtrado");
