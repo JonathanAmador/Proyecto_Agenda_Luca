@@ -68,11 +68,10 @@ public class ContactDAO implements IContactDAO {
 		try {
 			String hql = "";
 			if (numero) {
-				hql = "from Personas where idPersona in (Select personas.idPersona from Telefonos where telefono like '"
-						+ cadena + "%') order by nombre asc";
+				hql = "from Personas where idPersona in (Select personas.idPersona from Telefonos where telefono like ':cadena%') order by nombre asc";
 			} else {
 				System.out.println("No es un número");
-				hql = "from Personas where nombre like '%"+cadena+"%' order by nombre asc";
+				hql = "from Personas where nombre like '%:cadena%' order by nombre asc";
 			}
 			
 			
@@ -103,8 +102,7 @@ public class ContactDAO implements IContactDAO {
 		try {
 			int numero = Integer.parseInt(cadena);
 
-		} catch (Exception e) {
-			System.out.println(e.toString());
+		} catch (NumberFormatException e) {
 			return false;
 		}
 
@@ -141,7 +139,7 @@ public class ContactDAO implements IContactDAO {
 		List<Personas> listContact = null;
 
 		try {
-			String hql = "from Personas where idPersona = " + idContact;
+			String hql = "from Personas where idPersona =  :idContact";
 			Query query = sessionFactory.getCurrentSession().createQuery(hql);
 
 			if (query.list() != null) {
