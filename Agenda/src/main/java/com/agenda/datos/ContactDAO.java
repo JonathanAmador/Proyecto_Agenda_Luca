@@ -225,16 +225,29 @@ public class ContactDAO implements IContactDAO {
 	@Override
 	public List<Personas> searchListCategory(String cadena) {
 		
-		logger.info("cadena en dao:"+cadena);
-		String hql = "from Personas where idEmpleado in (Select idEmpleado from Empleados e where categorias in "
-				+ "(Select idcategorias from Categorias where nombre = '"
-						+ cadena + "')) order by nombre asc";
+		//hql = "from Personas where idEmpleado in (Select idEmpleado from Empleados e where categorias.idcategorias ="
+		//				+ cadena + ") order by nombre asc";
+		
+
+
+
+		logger.info("Mostrando listado de personas");
+
+		String hql = "from Personas where idEmpleado in (Select idEmpleado from Empleados e where categorias.idcategorias ="+ cadena + ") order by nombre asc";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 
 		@SuppressWarnings("unchecked")
 		List<Personas> listContact = (List<Personas>) query.list();
 
+		for (int i = 0; i < listContact.size(); i++) {
+			if (listContact.get(i).toString() != null) {
+				logger.info(listContact.get(i).getIdEmpleado().toString());
+			}
+		}
+
 		return listContact;
+		
+		
 	}
 
 }

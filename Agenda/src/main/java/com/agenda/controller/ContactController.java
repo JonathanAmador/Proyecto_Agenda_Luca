@@ -66,13 +66,13 @@ public class ContactController { // SearchListContact
 	
 	@RequestMapping(value="/showCategory", method = RequestMethod.GET)
 	public ModelAndView ListContactCategory(HttpServletRequest request) throws Exception {
+		
+		System.out.println("Categoria paso 1");
 		String id = request.getParameter("id");
 		
 		List<Personas> listContact = contactServices.searchListCategory(id);
 		
 		ModelAndView model = new ModelAndView("resultListContact");
-		
-		logger.info("Contacto1:"+listContact.get(0).toString());
 		
 		model.addObject("listContact", listContact);
 		
