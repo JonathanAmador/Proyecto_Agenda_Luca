@@ -63,7 +63,7 @@ Table OF Contents
 
 body {
   font-family: 'Hind', sans-serif;
-  color: #4A4E5A;
+  color: #30323a;
   overflow-x: hidden;
 }
 
@@ -137,13 +137,13 @@ table {
 }
 
 td, th {
-    border: 1px solid #dddddd;
+    /* border: 1px solid #30323A; */
     text-align: left;
     padding: 8px;
 }
 
 tr:nth-child(even) {
-    background-color: #dddddd;
+    background-color: #ff990017;
 }
 /*----------------------------*\
 	Buttons
@@ -290,7 +290,7 @@ textarea.input {
 }
 
 .section-grey {
-  background: #F6F7F8;
+  background: #30323a;
 }
 
 .section-title {
@@ -405,7 +405,7 @@ textarea.input {
   right: 1px;
   width: 80px;
   height: 40px;
-  background-color: #F8694A;
+  background-color: #30323A;
   border: none;
 }
 
@@ -496,7 +496,7 @@ textarea.input {
 ===========================================================*/
 
 #navigation {
-  background-color: #30323A;
+  background-color: #ff9900;
 }
 
 #navigation .container {
@@ -516,7 +516,7 @@ textarea.input {
   padding: 15px;
   display: block;
   text-transform: uppercase;
-  background: #F8694A;
+  background: #30323A;
   color: #FFF;
   font-weight: 700;
 }
@@ -1630,6 +1630,7 @@ textarea.input {
   margin-top: 15px;
   text-transform: uppercase;
   font-size: 14px;
+  color:white;
 }
 
 /*=========================================================
