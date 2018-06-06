@@ -61,6 +61,7 @@ public class ContactDAO implements IContactDAO {
 	public List<Personas> searchListContact(String cadena) {
 
 		boolean numero = true;
+		System.out.println("cadena en dao:"+cadena);
 		numero = checkNumero(cadena);
 		// Realizar metodo de comprobacion
 		List<Personas> listContact = null;
@@ -71,11 +72,10 @@ public class ContactDAO implements IContactDAO {
 						+ cadena + "%') order by nombre asc";
 			} else {
 				System.out.println("No es un número");
-				hql = "from Personas where nombre like '%" + cadena + "%' oder by nombre asc";
+				hql = "from Personas where nombre like '%"+cadena+"%' order by nombre asc";
 			}
 
 			Query query = sessionFactory.getCurrentSession().createQuery(hql);
-
 			if (query.list() != null) {
 				listContact = (List<Personas>) query.list();
 			}
