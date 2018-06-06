@@ -79,6 +79,20 @@ a {
   transition: 0.3s color;
 }
 
+a.buscar{
+  color: #ffffff ;
+  -webkit-transition: 0.3s color;
+  transition: 0.3s color;
+}
+	
+}
+
+a.buscar:hover{
+color: #30323a;
+  text-decoration: none;
+  outline: none;
+}
+
 a:hover, a:focus {
   color: #F8694A;
   text-decoration: none;
@@ -374,6 +388,7 @@ textarea.input {
 	Search header
 \*----------------------------*/
 
+
 .header-search {
   display: inline-block;
   padding: 15px 0px;
@@ -384,18 +399,19 @@ textarea.input {
   position: relative;
 }
 
-
-
-
-
 .header-search>form .search-btn {
   position: absolute;
   top: 0px;
-  right: 0px;
-  width: 40px;
+  right: 1px;
+  width: 80px;
   height: 40px;
-  background-color: transparent;
+  background-color: #F8694A;
   border: none;
+}
+
+.header-search>form .search-btn . buscar {
+  color:white;
+  float: left;
 }
 
 /*----------------------------*\
