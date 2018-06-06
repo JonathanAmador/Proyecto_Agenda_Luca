@@ -2,9 +2,7 @@ package com.agenda.datos;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -39,13 +37,15 @@ public class ContactDAO implements IContactDAO {
 	@Override
 	@Transactional
 	public List<Personas> searchListContact() {
-		logger.info("Mostrando listado de personas");
-
+		List<Personas> listContact = null;
 		String hql = "from Personas order by nombre asc";
-		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		try {
+			Query query = sessionFactory.getCurrentSession().createQuery(hql);
 
-		@SuppressWarnings("unchecked")
-		List<Personas> listContact = (List<Personas>) query.list();
+			listContact = (List<Personas>) query.list();
+		} catch (Exception e) {
+			logger.debug(e.toString());
+		}
 
 		return listContact;
 	}
@@ -76,8 +76,6 @@ public class ContactDAO implements IContactDAO {
 			logger.error("--- ERROR: Problem in ejecutaQuery");
 			logger.error(e.getMessage());
 		}
-		if (listContact == null)
-			logger.trace("Vacia");
 
 		return listContact;
 	}
@@ -146,6 +144,7 @@ public class ContactDAO implements IContactDAO {
 	public Personas get(int idContact) {
 
 		String hql = "from Personas where id='" + idContact + "'";
+
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 
 		@SuppressWarnings("unchecked")
@@ -165,11 +164,15 @@ public class ContactDAO implements IContactDAO {
 	public void delete(int idContact) {
 		Personas contactToDelete = new Personas();
 		String hql = "from Personas where idPersona=" + idContact;
-		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		try {
+			Query query = sessionFactory.getCurrentSession().createQuery(hql);
 
-		if (query.list() != null) {
-			contactToDelete = (Personas) query.list().get(0);
-			sessionFactory.getCurrentSession().delete(contactToDelete);
+			if (query.list() != null) {
+				contactToDelete = (Personas) query.list().get(0);
+				sessionFactory.getCurrentSession().delete(contactToDelete);
+			}
+		} catch (Exception e) {
+			logger.debug(e.toString());
 		}
 	}
 

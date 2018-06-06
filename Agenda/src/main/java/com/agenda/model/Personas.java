@@ -144,7 +144,7 @@ public class Personas implements java.io.Serializable {
 	 * Tiene que ser EAGER PORQUE SI NO NO TE MUESTRA EL SET EN EL JSP
 	 * @return
 	 */
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "personas")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "personas",cascade =CascadeType.ALL)
 	public Set<Telefonos> getTelefonos() {
 		return this.telefonos;
 	}
