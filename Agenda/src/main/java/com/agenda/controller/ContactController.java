@@ -51,7 +51,7 @@ public class ContactController { // SearchListContact
 		String cadena = request.getParameter("consulta");
 		
 		System.out.println("PASO 1: busqueda:"+cadena);
-		List<Personas> listContact = contactServices.searchListContact(cadena);
+		List<Personas> listContact = contactServices.searchListCategory(cadena);
 		System.out.println("PASO 2 filtrado");
 		ModelAndView model = new ModelAndView("resultListContact");
 		System.out.println("PASO 3 filtrado");
@@ -60,6 +60,18 @@ public class ContactController { // SearchListContact
 		return model;
 	}
 	
+	@RequestMapping(value="/showCategory", method = RequestMethod.GET)
+	public ModelAndView ListContactCategory(HttpServletRequest request) throws Exception {
+		String categoria = request.getParameter("categoria");
+		
+		List<Personas> listContact = contactServices.searchListContact(categoria);
+		
+		ModelAndView model = new ModelAndView("resultListContact");
+		
+		model.addObject("listContact", listContact);
+		
+		return model;
+	}
 	
 	
 	/*

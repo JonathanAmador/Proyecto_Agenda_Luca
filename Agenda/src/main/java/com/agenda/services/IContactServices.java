@@ -11,6 +11,8 @@ public interface IContactServices {
 
 	public Personas searchContact(int idContact);
 
+	public List<Personas> searchListCategory(String sql);
+	
 	public List<Personas> searchListContact();
 	
 	public Personas get(int idContact);

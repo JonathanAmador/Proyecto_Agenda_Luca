@@ -11,6 +11,8 @@ public interface IContactDAO {
 	
 	public List<Personas> searchListContact(String sql);
 	
+	public List<Personas> searchListCategory(String sql);
+	
 	public Personas searchContact(int idContact);
 	
 	public Personas get(int idContact);
