@@ -47,43 +47,29 @@ public class ContactDAO implements IContactDAO {
 		@SuppressWarnings("unchecked")
 		List<Personas> listContact = (List<Personas>) query.list();
 
-		for (int i = 0; i < listContact.size(); i++) {
-			if (listContact.get(i).toString() != null) {
-				logger.info(listContact.get(i).getIdEmpleado().toString());
-			}
-		}
-
-		logger.info(listContact.get(0).getTelefonos().toString());
-
 		return listContact;
 	}
 
 	public List<Personas> searchListContact(String cadena) {
 
 		boolean numero = true;
-		logger.info("cadena en dao:"+cadena);
+		logger.info("cadena en dao:" + cadena);
 		numero = checkNumero(cadena);
 
 		List<Personas> listContact = null;
 		try {
 			String hql = "";
 			if (numero) {
-				hql = "from Personas where idPersona in (Select personas.idPersona from Telefonos where telefono like '"+cadena+"%') order by nombre asc";
+				hql = "from Personas where idPersona in (Select personas.idPersona from Telefonos where telefono like '"
+						+ cadena + "%') order by nombre asc";
 			} else {
 				logger.info("No es un n�mero");
-				hql = "from Personas where nombre like '%"+cadena+"%' order by nombre asc";
+				hql = "from Personas where nombre like '%" + cadena + "%' order by nombre asc";
 			}
-			
-			
+
 			Query query = sessionFactory.getCurrentSession().createQuery(hql);
 			if (query.list() != null) {
 				listContact = (List<Personas>) query.list();
-			}
-
-			for (int i = 0; i < listContact.size(); i++) {
-				if (listContact.get(i).toString() != null) {
-					logger.info(listContact.get(i).getIdEmpleado().toString());
-				}
 			}
 
 		} catch (Exception e) {
@@ -96,8 +82,6 @@ public class ContactDAO implements IContactDAO {
 		return listContact;
 	}
 
-	
-	
 	private boolean checkNumero(String cadena) {
 		try {
 			int numero = Integer.parseInt(cadena);
@@ -139,7 +123,7 @@ public class ContactDAO implements IContactDAO {
 		List<Personas> listContact = null;
 
 		try {
-			String hql = "from Personas where idPersona =  "+idContact;
+			String hql = "from Personas where idPersona =  " + idContact;
 			Query query = sessionFactory.getCurrentSession().createQuery(hql);
 
 			if (query.list() != null) {
@@ -167,46 +151,9 @@ public class ContactDAO implements IContactDAO {
 		@SuppressWarnings("unchecked")
 		List<Personas> listContact = (List<Personas>) query.list();
 
-		for (int i = 0; i < listContact.size(); i++) {
-			if (listContact.get(i).toString() != null) {
-				logger.info(listContact.get(i).getIdEmpleado().toString());
-			}
-		}
-
 		logger.info(listContact.get(0).getTelefonos().toString());
 
 		return listContact.get(0);
-		/*
-		 * String hql = "from personas where idPersona=" + idContact+";"; Query
-		 * query = sessionFactory.getCurrentSession().createQuery(hql);
-		 * 
-		 * @SuppressWarnings("unchecked") List<Personas> listContact =
-		 * (List<Personas>) query.list(); //Telefonos hql =
-		 * "from telefonos where idPersona in (select idPersona from personas where idPersona="
-		 * + idContact+ ");"; query =
-		 * sessionFactory.getCurrentSession().createQuery(hql);
-		 * 
-		 * Set<Phones> setPhones = (Set<Phones>) query.list();
-		 * 
-		 * //Departamentos hql =
-		 * "from departamentos where iddepartamento in (select idDepartamento from personas where idPersona="
-		 * + idContact+ ");"; query =
-		 * sessionFactory.getCurrentSession().createQuery(hql);
-		 * 
-		 * Department department = (Department)query.list();
-		 * 
-		 * logger.info(department.toString());
-		 * 
-		 * //Categorias hql =
-		 * "from departamentos where iddepartamento in (select idDepartamento from personas where idPersona="
-		 * + idContact+ ");"; query =
-		 * sessionFactory.getCurrentSession().createQuery(hql);
-		 * 
-		 * Categories category = (Categories)query.list();
-		 * 
-		 * if (listContact != null && !listContact.isEmpty()) { return
-		 * listContact.get(0); }
-		 */
 	}
 
 	@Override
@@ -217,37 +164,29 @@ public class ContactDAO implements IContactDAO {
 	@Override
 	public void delete(int idContact) {
 		Personas contactToDelete = new Personas();
-		contactToDelete.setIdPersona(idContact);
-		sessionFactory.getCurrentSession().delete(contactToDelete);
+		String hql = "from Personas where idPersona=" + idContact;
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 
+		if (query.list() != null) {
+			contactToDelete = (Personas) query.list().get(0);
+			sessionFactory.getCurrentSession().delete(contactToDelete);
+		}
 	}
 
 	@Override
 	public List<Personas> searchListCategory(String cadena) {
-		
-		//hql = "from Personas where idEmpleado in (Select idEmpleado from Empleados e where categorias.idcategorias ="
-		//				+ cadena + ") order by nombre asc";
-		
-
-
 
 		logger.info("Mostrando listado de personas");
 
-		String hql = "from Personas where idEmpleado in (Select idEmpleado from Empleados e where categorias.idcategorias ="+ cadena + ") order by nombre asc";
+		String hql = "from Personas where idEmpleado in (Select idEmpleado from Empleados e where categorias.idcategorias ="
+				+ cadena + ") order by nombre asc";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 
 		@SuppressWarnings("unchecked")
 		List<Personas> listContact = (List<Personas>) query.list();
 
-		for (int i = 0; i < listContact.size(); i++) {
-			if (listContact.get(i).toString() != null) {
-				logger.info(listContact.get(i).getIdEmpleado().toString());
-			}
-		}
-
 		return listContact;
-		
-		
+
 	}
 
 }
