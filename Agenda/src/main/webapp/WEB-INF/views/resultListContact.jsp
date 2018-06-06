@@ -79,7 +79,7 @@
 						<ul class="category-list">
 
 
-							<li><a href="showListCategory?categoria=programador">Programador</a></li>
+							<li><a href="showCategory?categoria=programador">Programador</a></li>
 							<li><a href="#">Analísta</a></li>
 							<li><a href="#">Técnico Recursos Humanos</a></li>
 							<li><a href="#">Secretaria</a></li>

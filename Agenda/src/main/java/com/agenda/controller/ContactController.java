@@ -64,7 +64,7 @@ public class ContactController { // SearchListContact
 	public ModelAndView ListContactCategory(HttpServletRequest request) throws Exception {
 		String categoria = request.getParameter("categoria");
 		
-		List<Personas> listContact = contactServices.searchListContact(categoria);
+		List<Personas> listContact = contactServices.searchListCategory(categoria);
 		
 		ModelAndView model = new ModelAndView("resultListContact");
 		
