@@ -42,7 +42,6 @@
 				<div class="pull-left">
 					<span>Proyecto Spring Java</span>
 				</div>
-
 			</div>
 		</div>
 		<!-- /top Header -->
@@ -57,6 +56,8 @@
 							<h1>Agenda de contactos</h1>
 						</a>
 					</div>
+					
+					<img alt="" src="http://www.apexunderwriting.com/images/inner-banner-6.jpg">
 					<!-- /Logo -->
 				</div>
 			</div>

@@ -57,6 +57,8 @@
 							<h1>Agenda de contactos</h1>
 						</a>
 					</div>
+					
+					<img alt="" src="http://www.apexunderwriting.com/images/inner-banner-6.jpg">
 					<!-- /Logo -->
 				</div>
 			</div>
