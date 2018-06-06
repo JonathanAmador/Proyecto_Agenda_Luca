@@ -118,7 +118,7 @@
 				<!-- Search -->
 				<div class="header-search">
 					<form method="post" commandName="persona" action="showListContact">
-						<input class="input search-input" type="text"
+						<input  name="consulta" class="input search-input" type="text"
 							placeholder="Introduce el nombre del contacto" size="100">
 						<input type="submit" value="buscar" />
 					</form>
@@ -148,7 +148,7 @@
 							<td>${contact.idEmpleado.departamentos.nombre}</td>
 							<td>${contact.idEmpleado.categorias.nombre }</td>
 							<td><a href="edit?id=${contact.idPersona}">Modificar</a></td>
-							<td><a href="deleted?id">Eliminar</a></td>
+							<td><a href="deleted?id=${contact.idPersona}">Eliminar</a></td>
 							<td><a href="showContact?id=${contact.idPersona}">Detalles</a>
 						</tr>
 					</c:forEach>
