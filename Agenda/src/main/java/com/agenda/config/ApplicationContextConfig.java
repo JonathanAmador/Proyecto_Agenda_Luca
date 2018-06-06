@@ -13,7 +13,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import com.agenda.model.Categorias;
@@ -25,9 +27,11 @@ import com.agenda.model.Telefonos;
 
 
 @Configuration
-@ComponentScan("com.agenda")
+@EnableWebMvc
+@ComponentScan(basePackages= "com.agenda")
 @EnableTransactionManagement
-public class ApplicationContextConfig {
+public class ApplicationContextConfig extends WebMvcConfigurerAdapter {
+	
     @Bean(name = "viewResolver")
     public InternalResourceViewResolver getViewResolver() {
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
@@ -38,10 +42,16 @@ public class ApplicationContextConfig {
     
 
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-	    registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
-		///registry.addResourceHandler("/css/**").addResourceLocations("/static/css/");	    
+		System.out.println("entra en css static");
+		registry
+	    .addResourceHandler("/static/**")
+	    .addResourceLocations("/static/");
+		///registry.addResourceHandler("/css/**").addResourceLocations("/static/css/");	
+	    
 	}
      
+   
+    
     
     @Bean(name = "dataSource")
     public DataSource getDataSource() {
