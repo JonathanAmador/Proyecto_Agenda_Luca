@@ -227,7 +227,7 @@ public class ContactDAO implements IContactDAO {
 		
 		logger.info("cadena en dao:"+cadena);
 		String hql = "from Personas where idEmpleado in (Select idEmpleado from Empleados e where categorias in "
-				+ "(Select idcategorias from Categorias where nombre = '"
+				+ "(Select idcategorias from Categorias where idcategorias = '"
 						+ cadena + "')) order by nombre asc";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 
