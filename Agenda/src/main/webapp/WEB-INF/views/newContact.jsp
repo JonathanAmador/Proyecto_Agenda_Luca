@@ -77,7 +77,7 @@
 		<div class="container">
 			<div id="responsive-nav">
 				<!-- category nav -->
-				div class="category-nav"> <span class="category-header">Categorias
+				<div class="category-nav"> <span class="category-header">Categorias
 					<i class="fa fa-list"></i>
 				</span>
 				<form method="POST" action="FilmListSelect.do">
@@ -133,56 +133,62 @@
 				<!-- /BREADCRUMB -->
 				<h1>Nuevo Usuario</h1>
 
-				<form:form method="post" commandName="cliente"
-					action="addCliente.htm">
+				<form:form method="post" commandName="persona" action="save">
 					<table>
 						<tr>
 							<td><form:label path="nombre">Nombre</form:label></td>
 							<td><form:input path="nombre" /></td>
 						</tr>
 						<tr>
-							<td><form:label path="apellido">Apellido</form:label></td>
-							<td><form:input path="apellido" /></td>
-						</tr>
-						<tr>
-							<td><form:label path="apellido1">Fecha de nacimiento</form:label></td>
+							<td><form:label path="apellido1">Apellido1</form:label></td>
 							<td><form:input path="apellido1" /></td>
 						</tr>
 						<tr>
-							<td><form:label path="apellido2">DNI</form:label></td>
+							<td><form:label path="idEmpleado">idEmpleado</form:label></td>
+							<td><form:input path="idEmpleado" /></td>
+						</tr>
+						
+					<!-- <tr>
+							<td><form:label path="apellido2">Apellido2</form:label></td>
 							<td><form:input path="apellido2" /></td>
 						</tr>
 						<tr>
-							<td><form:label path="telefonos">No. Telefono</form:label></td>
+							<td><form:label path="dni">DNI</form:label></td>
+							<td><form:input path="dni" /></td>
+						</tr>
+						<tr>
+							<td><form:label path="telefonos">Telefono</form:label></td>
 							<td><form:input path="telefonos" /></td>
 						</tr>
 						<tr>
-							<td><form:label path="departamento">Departamento</form:label>
-							<select name="departamentos">
-								<option value="new?id=rrhh">RRHH</option>
-								<option value="new?id=informatica">Informatica</option>
-								<option value="new?id=logistica">Logística</option>
-								<option value="new?id=direccion">Dirección</option>
-							</select></td>
-							<td><form:input path="departamento" /></td>
+							<td><form:label path="fechaNacimiento">fechaNacimiento</form:label></td>
+							<td><form:input path="fechaNacimiento" /></td>
 						</tr>
 						<tr>
-							<td><form:label path="categoria">Categoria</form:label>
-							<select name="categorias">
-								<option value="newContact?id=programador">Programador</option>
-								<option value="newContact?id=analista">Analísta</option>
-								<option value="newContact?id=tecnico">Técnico Recursos Humanos</option>
-								<option value="newContact?id=recretaria">Secretaria</option>
-								<option value="newContact?id=recepcionista">Recepcionista</option>
-								<option value="newContact?id=master">Master del Universo</option>
+							<td>
+							<select name="departamentos">
+								<option value="1">RRHH</option>
+								<option value="2">Informatica</option>
+								<option value="3">Logística</option>
+								<option value="4">Dirección</option>
 							</select></td>
-							<td><form:input path="categoria" /></td>
+							
 						</tr>
+						<tr>
+							<td>
+							<select name="categorias">
+								<option value="1">Programador</option>
+								<option value="2">Analísta</option>
+								<option value="3">Técnico Recursos Humanos</option>
+								<option value="4">Secretaria</option>
+								<option value="5">Recepcionista</option>
+								<option value="6">Master del Universo</option>
+							</select></td>
+						</tr>-->
 					</table>
 					<br />
-					<p>
+					
 						<input type="submit" value="Dar de alta" />
-					</p>
 				</form:form>
 
 

@@ -138,22 +138,28 @@
 
 					<form:form>
 						<table style="width: 100%">
-							<c:forEach var="contact" items="$${contact}" varStatus="status">
+							<td>${contact.nombre}</td>
+							<td>${contact.apellido1},${contact.apellido2}</td>
+							<td><c:forEach var="entry" items="${contact.telefonos}">
+    								 ${entry.telefono}<br>
+								</c:forEach></td>
+							<td>${contact.idEmpleado.departamentos.nombre}</td>
+							<td>${contact.idEmpleado.categorias.nombre }</td>
 								<tr>
 									<th>Nombre</th>
-									<td>${Contact.name}</td>
+									<td>${contact.nombre}</td>
 								</tr>
 								<tr>
 									<th>Apellidos</th>
-									<td>${Contact.surname}${contact.surname2}</td>
+									<td>${contact.apellido1} ${contact.apellido2}</td>
 								</tr>
 								<tr>
 									<th>Fecha de nacimiento</th>
-									<td>${Contact.dob}</td>
+									<td>${contact.dob}</td>
 								</tr>
 								<tr>
 									<th>DNI</th>
-									<td>${Contact.dni}</td>
+									<td>${contact.dni}</td>
 								</tr>
 								<tr>
 									<th>Teléfono</th>
@@ -170,7 +176,6 @@
 									<th>Categoría</th>
 									<td>${contact.category.name }</td>
 								</tr>
-							</c:forEach>
 						</table>
 
 					</form:form>

@@ -157,7 +157,7 @@
 							<td>${contact.idEmpleado.departamentos.nombre}</td>
 							<td>${contact.idEmpleado.categorias.nombre }</td>
 							<td><a href="edit?id=${contact.idPersona}">Modificar</a></td>
-							<td><a href="deleted?id=${contact.idPersona}">Eliminar</a></td>
+							<td><a href="delete?id=${contact.idPersona}">Eliminar</a></td>
 							<td><a href="showContact?id=${contact.idPersona}">Detalles</a>
 						</tr>
 					</c:forEach>

@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -93,14 +94,16 @@ public class ContactController { // SearchListContact
 	}
 	
 	
-	/*
+	
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
 	public ModelAndView newUser() {
-		ModelAndView model = new ModelAndView("UserForm");
-		model.addObject("user", new Contact());
+		ModelAndView model = new ModelAndView("newContact");
+		model.addObject("persona", new Personas());
 		return model;		
 	}
-	*/
+	
+	
+	
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
 	public ModelAndView editUser(HttpServletRequest request) {
 		int userId = Integer.parseInt(request.getParameter("id"));
@@ -113,18 +116,18 @@ public class ContactController { // SearchListContact
 		return model;		
 	}
 	
-	/*
+	
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
 	public ModelAndView deleteUser(HttpServletRequest request) {
-		int userId = Integer.parseInt(request.getParameter("id"));
-		contactServices.delete(contactId);
+		int id = Integer.parseInt(request.getParameter("id"));
+		contactServices.delete(id);
 		return new ModelAndView("redirect:/");		
 	}
 	
-	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public ModelAndView saveUser(@ModelAttribute Contact contact) {
+	@RequestMapping(value ="/save", method = RequestMethod.POST)
+	public ModelAndView saveUser(@ModelAttribute Personas contact) {
 		contactServices.saveOrUpdate(contact);
 		return new ModelAndView("redirect:/");
-	}*/
+	}
 	
 }
