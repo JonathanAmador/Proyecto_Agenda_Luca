@@ -21,4 +21,5 @@ public interface IContactServices {
 	
 	public void delete(int idContact);
 
+
 }

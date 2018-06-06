@@ -20,5 +20,6 @@ public interface IContactDAO {
 	public void saveOrUpdate(Personas contact);
 	
 	public void delete(int idContact);
+	public int numero();
 }
 

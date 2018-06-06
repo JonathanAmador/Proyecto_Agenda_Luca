@@ -191,5 +191,8 @@ public class ContactDAO implements IContactDAO {
 		return listContact;
 
 	}
+	public int numero(){
+		return 2;
+	}
 
 }

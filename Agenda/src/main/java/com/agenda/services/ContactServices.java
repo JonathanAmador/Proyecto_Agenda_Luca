@@ -48,4 +48,5 @@ public class ContactServices implements IContactServices {
 	public List<Personas> searchListCategory(String sql) {
 		return contactDao.searchListCategory(sql);
 	}
+
 }
