@@ -38,22 +38,30 @@
 	</nav>
 
 	<!-- First Container -->
-	<div class="container-fluid bg-1 text-center">
-		<h3>Contenedor de menu</h3>
+		<div align="center">
+		<h1>FORMULARIO DE USUARIOS (add/edit)</h1>
 		<table>
-			<c:forEach var="contact" items="${contactList}" varStatus="status">
+			<form:form action="save" method="post" modelAttribute="user">
+				
+				<form:hidden path="idPersona" />
 				<tr>
-					<td>${contact.name}</td>
-					<td>${contact.surname}</td>
-					<!--  <td><a href="edit?id=${contact.id}">Modificar</a></td>
-					 <td><a href="delete?id=${user.id}">Eliminar</a></td>
-					<td></td>-->
+					<td>Usuario:</td>
+					<td><form:input path="nombre" /></td>
 				</tr>
-			</c:forEach>
+				<tr>
+					<td>Apellidos:</td>
+					<td><form:input path="Apellido1" /></td>
+				</tr>
+				<tr>
+					<td>DNI:</td>
+					<td><form:password path="dni" /></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center"><input type="submit"
+						value="Guardar Registro"></td>
+				</tr>
+			</form:form>
 		</table>
-
-		<h3>uy</h3>
-		<a href="edit">Listado</a>
 	</div>
 
 

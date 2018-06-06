@@ -43,57 +43,51 @@ public class ContactDAO implements IContactDAO {
 	@Transactional
 	public List<Personas> searchListContact() {
 		logger.info("Mostrando listado de personas");
-		//String hql ="from Personas p,Departamentos d,Categorias c where p.idEmpleado in (select idEmpleado from Empleados where idDepartamento = d.iddepartamento )";
-		
-		String hql ="from Personas";
+				
+		String hql ="from Personas order by nombre asc";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 
 		@SuppressWarnings("unchecked")
 		List<Personas> listContact = (List<Personas>) query.list();
 		
-		
-		
 		for(int i=0;i<listContact.size();i++){
 			if(listContact.get(i).toString() != null){
-			System.out.println(listContact.get(i).getIdEmpleado().toString());
+				logger.info(listContact.get(i).getIdEmpleado().toString());
 			}
 		}
+		
 		System.out.println(listContact.get(0).getTelefonos().toString());
 
-
-		
-		return listContact;
-		
+		return listContact;	
 	}
 	
-//QUITAR METODO
-	public List<Personas> searchListContact(String sql) {
 
+	public List<Personas> searchListContact(String cadena) {
+		boolean nombre =true;
+		//Realizar metodo de comprobacion
 		List<Personas> listContact = null;
 		try {
-			ResultSet result01 = createStatement().executeQuery(
-					"select p.idPersona, p.nombre, p.apellido1, t.telefono, d.nombre, c.nombre from personas p, telefonos t, departamentos d, categorias c where p.idPersona = t.idPersona and p.idEmpleado in (select idEmpleado from empleados where idCategoria = c.idcategorias and idDepartamento = d.iddepartamento) and p.nombre like '%%' and t.telefono like '%%';");
-
-			listContact = new ArrayList<Personas>();
-			result01.beforeFirst();
-			while (result01.next()) {
-				// Posible problema
-				// listContact.add(new Contact(result.getInt(0)/*IdPersona*/,
-				// result.getString(1)/*Nombre*/,result.getString(2)/*APELLIDO*/,
-				// result.getString(3)/*TELEFONO*/,
-				// result.getString(4)/*CATEGORIA*/,
-				// result.getString(5)/*DEPARTAMENTO*/, null));
-				ResultSet result02 = createStatement().executeQuery(
-						"select  t.telefono from telefonos t where t.idPersona in (select idPersona from personas where idPersona = "
-								+ result01.getInt(0) + ") t.telefono like '%%';");
-				// listContact.add(new Contact(result01.getInt(0)/*IdPersona*/,
-				// result01.getString(1)/*Nombre*/,result01.getString(2)/*APELLIDO*/,
-				// new Department(result01.getString(4),new
-				// Categories(result01.getString(5));
-
-				System.out.println("Entra en result");
-
+			String hql = "";
+			if(nombre){
+				hql = "from Personas where nombre like '%"+cadena+"%' oder by nombre asc";
+			}else{
+				hql = "from Personas where idPersona in (Select personas.idPersona from Telefonos where telefono like '"+cadena+"%') order by nombre asc";
 			}
+			
+			Query query = sessionFactory.getCurrentSession().createQuery(hql);
+			
+			if(query.list() == null){
+				listContact = null;
+			}else{
+				listContact = (List<Personas>)query.list();
+			}
+			
+			for(int i=0;i<listContact.size();i++){
+				if(listContact.get(i).toString() != null){
+					logger.info(listContact.get(i).getIdEmpleado().toString());
+				}
+			}
+
 		} catch (Exception e) {
 			System.err.println("--- ERROR: Problem in ejecutaQuery");
 			System.err.println(e.getMessage());
@@ -101,7 +95,7 @@ public class ContactDAO implements IContactDAO {
 		if (listContact == null)
 			System.out.println("Vacia");
 
-		System.out.println("mi sql" + sql);
+			
 		return listContact;
 	}
 
@@ -132,45 +126,46 @@ public class ContactDAO implements IContactDAO {
 	@Override
 	public Personas searchContact(int idContact) {
 
-		Personas contact = null;
-/*
+		List<Personas> listContact = null;
+		
 		try {
+				String hql = "from Personas where idPersona = "+idContact;		
+				Query query = sessionFactory.getCurrentSession().createQuery(hql);
+				
+				if(query.list() != null){
+					listContact = (List<Personas>)query.list();
+				}
 
-			ResultSet result = createStatement().executeQuery(
-					"select p.idPersona, p.nombre, p.apellido1, p.apellido2 ,p.dni, p.idEmpleado, p.idDireccion from personas p where p.idPersona = "
-							+ idContact + "; ");
-
-			contact = new Personas(result.getInt(0), result.getString(1), result.getString(2), result.getString(3),
-					result.getString(4), null);
-
-			// Query empleado
-			result = createStatement().executeQuery(
-					"select p.idPersona, p.nombre, p.apellido1, p.apellido2 ,p.dni, p.idEmpleado, p.idDireccion from personas p where p.idPersona = "
-							+ idContact + "; ");
-			contact = new Personas(result.getInt(0), result.getString(1), result.getString(2), result.getString(3),
-					result.getString(4), null);
-
-			result.beforeFirst();
-			// while (result.next()) {
-
-			System.out.println("Entra en result");
-
-			// }
 		} catch (Exception e) {
 			System.err.println("--- ERROR: Problem in ejecutaQuery");
 			System.err.println(e.getMessage());
 		}
-		if (contact == null)
-			System.out.println("No hay contacto");
+		
+		if (listContact != null){
+			return listContact.get(0);
+		}
 
-		// System.out.println("mi sql" + sql);
-		// return listContact;
-*/
 		return null;
 	}
 
 	@Override
 	public Personas get(int idContact) {
+		
+		String hql ="from Personas where id='"+idContact+"'";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+
+		@SuppressWarnings("unchecked")
+		List<Personas> listContact = (List<Personas>) query.list();
+		
+		for(int i=0;i<listContact.size();i++){
+			if(listContact.get(i).toString() != null){
+				logger.info(listContact.get(i).getIdEmpleado().toString());
+			}
+		}
+		
+		System.out.println(listContact.get(0).getTelefonos().toString());
+
+		return listContact.get(0);	
 	/*	
 		String hql = "from personas where idPersona=" + idContact+";";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
@@ -200,8 +195,6 @@ public class ContactDAO implements IContactDAO {
 		if (listContact != null && !listContact.isEmpty()) {
 			return listContact.get(0);
 		}*/
-		
-		return null;
 	}
 
 	@Override

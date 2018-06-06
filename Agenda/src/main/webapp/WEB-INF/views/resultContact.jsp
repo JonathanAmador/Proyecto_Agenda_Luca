@@ -130,78 +130,34 @@
 			<div class="home-wrap">
 				<!-- home slick -->
 				
-				<!-- BREADCRUMB -->
-	<!-- Search -->
-					<div class="header-search">
-						<form>
-							<input class="input search-input" type="text" placeholder="Introduce el nombre del contacto" size="100">
-							<button class="search-btn"><i class="fa fa-search"></i></button>
-						</form>
-					</div>
-					<!-- /Search -->
-	<!-- /BREADCRUMB -->
-				<h1>Lista de contactos</h1>
-
-<table>
-  <tr>
-    <th>Nombre</th>
-	<th>Apellidos</th>
-	<th>Teléfono</th>
-	<th>Departamento</th>
-	<th>Categoría</th>
-     
-  </tr>
-  <tr>
-   <c:forEach var="contact" items="${listContact}" varStatus="status">
-    <td>${Contact.name}</td>
-    <td>${Contact.surname} ${contact.surname2}</td>
-    
-    <td><c:forEach var="phone" items="${contact.phones}" varStatus="status">
-		${phone.phone}<br>
-	</c:forEach></td>
-							
-    <td>${contact.department.nameDepartment}</td>
-    <td>${contact.category.name }</td>
-    <td><a href="edit?id">Modificar</a></td>
-    <td><a href="deleted?id">Eliminar</a></td>
-    </c:forEach>
-  </tr>
-  
-  
-  
-</table>
-        
-        
-         
-         
+				<div align="center">
+		<h1>FORMULARIO DE USUARIOS (add/edit)</h1>
+		<table>
+			<form:form action="save" method="post" modelAttribute="contact">
 				
-				<!-- /home slick -->
-			</div>
-			<!-- /home wrap -->
-		</div>
-		<!-- /container -->
+				<form:hidden path="idPersona" />
+				<tr>
+					<td>Usuario:</td>
+					<td><form:input path="nombre" /></td>
+				</tr>
+				<tr>
+					<td>Apellidos:</td>
+					<td><form:input path="Apellido1" /></td>
+				</tr>
+				<tr>
+					<td>DNI:</td>
+					<td><form:password path="dni" /></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center"><input type="submit"
+						value="Guardar Registro"></td>
+				</tr>
+			</form:form>
+		</table>
 	</div>
-	<!-- /HOME -->
-
-	<!-- section -->
-	<div class="section">
-		<!-- container -->
-		<div class="container">
-			<!-- row -->
-			<div class="row">
-				
-
-				
 
 
-			</div>
-			<!-- /row -->
-		</div>
-		<!-- /container -->
-	</div>
-	
-
-	<!-- FOOTER -->
+				<!-- FOOTER -->
 	<footer id="footer" class="section section-grey">
 		<!-- container -->
 		<div class="container">

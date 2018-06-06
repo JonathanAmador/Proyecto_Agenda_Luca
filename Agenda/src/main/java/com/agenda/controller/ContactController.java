@@ -37,7 +37,7 @@ public class ContactController { // SearchListContact
 	@RequestMapping(value ="/showContact", method = RequestMethod.GET)
 	public ModelAndView contactInfo(HttpServletRequest request){
 		int idPerson = Integer.parseInt(request.getParameter("id"));
-		Personas contact = (Personas) contactServices.searchContact(idPerson);
+		Personas contact = (Personas) contactServices.get(idPerson);
 		ModelAndView model = new ModelAndView("resultContact");
 		model.addObject("contact", contact);
 		return model;
@@ -45,7 +45,7 @@ public class ContactController { // SearchListContact
 		
 	}
 	
-	@RequestMapping("/showListContact")
+	@RequestMapping(value="/showListContact", method = RequestMethod.POST)
 	public ModelAndView listContactFilter() throws Exception {
 		System.out.println("PASO 1 filtrado");
 		List<Personas> listContact = contactServices.searchListContact("SQL");
@@ -66,16 +66,20 @@ public class ContactController { // SearchListContact
 		model.addObject("user", new Contact());
 		return model;		
 	}
-	
+	*/
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
 	public ModelAndView editUser(HttpServletRequest request) {
 		int userId = Integer.parseInt(request.getParameter("id"));
-		Contact contact = contactServices.get(contactId);
-		ModelAndView model = new ModelAndView("UserForm");
-		model.addObject("user", contact);
+		System.out.println("ID:"+userId);
+		
+		Personas contact = contactServices.get(userId);
+		System.out.println("Cogiendo usuario:"+contact.getNombre());
+		ModelAndView model = new ModelAndView("newContact");
+		model.addObject("contact", contact);
 		return model;		
 	}
 	
+	/*
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
 	public ModelAndView deleteUser(HttpServletRequest request) {
 		int userId = Integer.parseInt(request.getParameter("id"));
