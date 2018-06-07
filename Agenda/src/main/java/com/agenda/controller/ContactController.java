@@ -4,8 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,17 +23,17 @@ public class ContactController { // SearchListContact
 	@Autowired
 	private IContactServices contactServices;
 	
-	private static final Logger logger = LoggerFactory.getLogger("ContactController");
+	private static final Logger logger = Logger.getLogger("ContactController");
 
 	@RequestMapping("/")
 	public ModelAndView handlesRequest() throws Exception {
-		System.out.println("PASO 1 ");
+		logger.info("*****************PASO 1 *********************");
 		List<Personas> listContact = contactServices.searchListContact();
-		System.out.println("PASO 2");
+		logger.info("********************PASO 2*************************");
 		ModelAndView model = new ModelAndView("resultListContact");
-		System.out.println("PASO 3");
+		logger.info("*************************PASO 3**************************");
 		model.addObject("listContact", listContact);
-		System.out.println("PASO 4");
+		logger.info("***********************PASO 4*******************");
 		return model;
 	}
 	
@@ -66,22 +65,22 @@ public class ContactController { // SearchListContact
 	
 		String cadena = request.getParameter("consulta");
 		
-		System.out.println("PASO 1: busqueda:"+cadena);
+		logger.info("**********************PASO 1: busqueda:*************************"+cadena);
 		List<Personas> listContact = contactServices.searchListContact(cadena);
-		System.out.println("PASO 2 filtrado");
+		logger.info("**************************PASO 2 filtrado***************************");
 		ModelAndView model = new ModelAndView("resultListContact");
 		
 		logger.info("Contacto1:"+listContact.get(0).toString());
-		System.out.println("PASO 3 filtrado");
+		logger.info("************************PASO 3 filtrado**************");
 		model.addObject("listContact", listContact);
-		System.out.println("PASO 4 flitrado");
+		logger.info("********************PASO 4 flitrado****************************");
 		return model;
 	}
 	
 	@RequestMapping(value="/showCategory", method = RequestMethod.GET)
 	public ModelAndView ListContactCategory(HttpServletRequest request) throws Exception {
 		
-		System.out.println("Categoria paso 1");
+		logger.info("Categoria paso 1");
 		String id = request.getParameter("id");
 		
 		List<Personas> listContact = contactServices.searchListCategory(id);
@@ -107,10 +106,10 @@ public class ContactController { // SearchListContact
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
 	public ModelAndView editUser(HttpServletRequest request) {
 		int userId = Integer.parseInt(request.getParameter("id"));
-		System.out.println("ID:"+userId);
+		logger.info("ID:"+userId);
 		
 		Personas contact = contactServices.get(userId);
-		System.out.println("Cogiendo usuario:"+contact.getNombre());
+		logger.info("Cogiendo usuario:"+contact.getNombre());
 		ModelAndView model = new ModelAndView("newContact");
 		model.addObject("contact", contact);
 		return model;		

@@ -5,6 +5,7 @@ import java.util.Properties;
 import javax.sql.DataSource;
 
 import org.apache.commons.dbcp2.BasicDataSource;
+import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -32,6 +33,9 @@ import com.agenda.model.Telefonos;
 @EnableTransactionManagement
 public class ApplicationContextConfig extends WebMvcConfigurerAdapter {
 	
+	private static final Logger logger = Logger.getLogger("ApplicationContextConfig");
+
+	
     @Bean(name = "viewResolver")
     public InternalResourceViewResolver getViewResolver() {
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
@@ -42,7 +46,7 @@ public class ApplicationContextConfig extends WebMvcConfigurerAdapter {
     
 
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		System.out.println("entra en css static");
+		logger.info("entra en css static");
 		registry
 	    .addResourceHandler("/static/**")
 	    .addResourceLocations("/static/");

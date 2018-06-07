@@ -7,12 +7,12 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.apache.log4j.Logger;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -25,7 +25,7 @@ public class ContactDAO implements IContactDAO {
 	@Autowired
 	private SessionFactory sessionFactory;
 
-	private static final Logger logger = LoggerFactory.getLogger("ContactDAO");
+	private static final Logger logger = Logger.getLogger("ContactDAO");
 
 	public ContactDAO() {
 	}
@@ -179,7 +179,7 @@ public class ContactDAO implements IContactDAO {
 	@Override
 	public List<Personas> searchListCategory(String cadena) {
 
-		logger.info("Mostrando listado de personas");
+		logger.info("********************Mostrando listado de personas******************************");
 
 		String hql = "from Personas where idEmpleado in (Select idEmpleado from Empleados e where categorias.idcategorias ="
 				+ cadena + ") order by nombre asc";
