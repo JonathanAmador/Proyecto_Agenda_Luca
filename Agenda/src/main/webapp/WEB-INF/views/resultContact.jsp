@@ -77,38 +77,39 @@
 		<div class="container">
 			<div id="responsive-nav">
 				<!-- category nav -->
-				div class="category-nav"> <span class="category-header">Categorias
-					<i class="fa fa-list"></i>
-				</span>
-				<form method="POST" action="FilmListSelect.do">
-					<ul class="category-list">
+				<div class="category-nav">
+					<span class="category-header">Categorias <i
+						class="fa fa-list"></i>
+					</span>
+					<form method="POST" action="FilmListSelect.do">
+						<ul class="category-list">
 
 
-						<li><a href="showCategory?id=1">Programador</a></li>
-						<li><a href="showCategory?id=2">Analísta</a></li>
-						<li><a href="showCategory?id=3">Técnico Recursos Humanos</a></li>
-						<li><a href="showCategory?id=4">Secretaria</a></li>
-						<li><a href="showCategory?id=5">Recepcionista</a></li>
-						<li><a href="showCategory?id=6">Master del Universo</a></li>
+							<li><a href="showCategory?id=1">Programador</a></li>
+							<li><a href="showCategory?id=2">Analísta</a></li>
+							<li><a href="showCategory?id=3">Técnico Recursos Humanos</a></li>
+							<li><a href="showCategory?id=4">Secretaria</a></li>
+							<li><a href="showCategory?id=5">Recepcionista</a></li>
+							<li><a href="showCategory?id=6">Master del Universo</a></li>
+
+						</ul>
+					</form>
+				</div>
+				<!-- /category nav -->
+
+				<!-- menu nav -->
+				<div class="menu-nav">
+					<span class="menu-header">Menu <i class="fa fa-bars"></i></span>
+					<ul class="menu-list">
+						<li><a href="new">Nuevo contacto</a></li>
+						<li><a href="lista">Lista de Contactos</a></li>
 
 					</ul>
-				</form>
+				</div>
+				<!-- menu nav -->
 			</div>
-			<!-- /category nav -->
-
-			<!-- menu nav -->
-			<div class="menu-nav">
-				<span class="menu-header">Menu <i class="fa fa-bars"></i></span>
-				<ul class="menu-list">
-					<li><a href="new">Nuevo contacto</a></li>
-					<li><a href="lista">Lista de Contactos</a></li>
-
-				</ul>
-			</div>
-			<!-- menu nav -->
 		</div>
-	</div>
-	<!-- /container -->
+		<!-- /container -->
 	</div>
 	<!-- /NAVIGATION -->
 
@@ -138,44 +139,42 @@
 
 					<form:form>
 						<table style="width: 100%">
-							<td>${contact.nombre}</td>
-							<td>${contact.apellido1},${contact.apellido2}</td>
-							<td><c:forEach var="entry" items="${contact.telefonos}">
-    								 ${entry.telefono}<br>
-								</c:forEach></td>
-							<td>${contact.idEmpleado.departamentos.nombre}</td>
-							<td>${contact.idEmpleado.categorias.nombre }</td>
-								<tr>
-									<th>Nombre</th>
-									<td>${contact.nombre}</td>
-								</tr>
-								<tr>
-									<th>Apellidos</th>
-									<td>${contact.apellido1} ${contact.apellido2}</td>
-								</tr>
-								<tr>
-									<th>Fecha de nacimiento</th>
-									<td>${contact.dob}</td>
-								</tr>
-								<tr>
-									<th>DNI</th>
-									<td>${contact.dni}</td>
-								</tr>
-								<tr>
-									<th>Teléfono</th>
-									<td><c:forEach var="contact" items="${contact.phones}"
-											varStatus="status">
-										${contact.phone}<br>
-										</c:forEach></td>
-								</tr>
-								<tr>
-									<th>Departamento</th>
-									<td>${contact.department.nameDepartment}</td>
-								</tr>
-								<tr>
-									<th>Categoría</th>
-									<td>${contact.category.name }</td>
-								</tr>
+
+							<tr>
+								<th>Nombre</th>
+								<td>${contact.nombre}</td>
+							</tr>
+							<tr>
+								<th>Apellidos</th>
+								<td>${contact.apellido1} ${contact.apellido2}</td>
+							</tr>
+							<tr>
+								<th>Fecha de nacimiento</th>
+								<td>${contact.fechaNacimiento}</td>
+							</tr>
+							<tr>
+								<th>DNI</th>
+								<td>${contact.dni}</td>
+							</tr>
+							<tr>
+								<th>Fecha de alta<th/>
+								<td>${contact.idEmpleado.fechaAlta}</td>
+							<tr>
+								<th>Teléfono</th>
+								<td><c:forEach var="contact" items="${contact.telefonos}"
+										varStatus="status">
+										${contact.telefono}<br>
+									</c:forEach></td>
+							</tr>
+						
+							<tr>
+								<th>Departamento</th>
+								<td>${contact.idEmpleado.departamentos.nombre}</td>
+							</tr>
+							<tr>
+								<th>Categoría</th>
+								<td>${contact.idEmpleado.categorias.nombre }</td>
+							</tr>
 						</table>
 
 					</form:form>
@@ -222,8 +221,7 @@
 						<script>
 							document.write(new Date().getFullYear());
 						</script>
-						Todos derechos reservados | por <a href="https://colorlib.com"
-							target="_blank">Grupo A LucaTic</a>
+						Todos derechos reservados | por Grupo A LucaTic
 						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 					</div>
 					<!-- /footer copyright -->

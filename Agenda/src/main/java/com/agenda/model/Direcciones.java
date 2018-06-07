@@ -7,7 +7,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -26,7 +28,7 @@ public class Direcciones implements java.io.Serializable {
 	private String codPostal;
 	private String localidad;
 	private String provincia;
-	private Set<Personas> personases = new HashSet<Personas>(0);
+	private Personas personas;
 
 	public Direcciones() {
 	}
@@ -40,13 +42,13 @@ public class Direcciones implements java.io.Serializable {
 	}
 
 	public Direcciones(int idDireccion, String direccion, String codPostal, String localidad, String provincia,
-			Set<Personas> personases) {
+			Personas personas) {
 		this.idDireccion = idDireccion;
 		this.direccion = direccion;
 		this.codPostal = codPostal;
 		this.localidad = localidad;
 		this.provincia = provincia;
-		this.personases = personases;
+		this.personas = personas;
 	}
 
 	@Id
@@ -60,11 +62,12 @@ public class Direcciones implements java.io.Serializable {
 		this.idDireccion = idDireccion;
 	}
 
+
 	@Column(name = "direccion", nullable = false, length = 45)
 	public String getDireccion() {
 		return this.direccion;
 	}
-
+	
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
 	}
@@ -96,13 +99,13 @@ public class Direcciones implements java.io.Serializable {
 		this.provincia = provincia;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "direcciones")
-	public Set<Personas> getPersonases() {
-		return this.personases;
+
+	public Personas getPersonas() {
+		return this.personas;
 	}
 
-	public void setPersonases(Set<Personas> personases) {
-		this.personases = personases;
+	public void setPersonas(Personas personas) {
+		this.personas = personas;
 	}
 
 }
