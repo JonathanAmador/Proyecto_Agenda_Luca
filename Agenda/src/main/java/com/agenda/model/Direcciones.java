@@ -28,7 +28,7 @@ public class Direcciones implements java.io.Serializable {
 	private String codPostal;
 	private String localidad;
 	private String provincia;
-	private Personas personas;
+	//private Personas personas;
 
 	public Direcciones() {
 	}
@@ -48,7 +48,7 @@ public class Direcciones implements java.io.Serializable {
 		this.codPostal = codPostal;
 		this.localidad = localidad;
 		this.provincia = provincia;
-		this.personas = personas;
+		//this.personas = personas;
 	}
 
 	@Id
@@ -100,12 +100,12 @@ public class Direcciones implements java.io.Serializable {
 	}
 
 
-	public Personas getPersonas() {
+/*	public Personas getPersonas() {
 		return this.personas;
 	}
 
 	public void setPersonas(Personas personas) {
 		this.personas = personas;
-	}
+	}*/
 
 }

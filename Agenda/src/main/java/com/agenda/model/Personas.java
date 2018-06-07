@@ -74,7 +74,7 @@ public class Personas implements java.io.Serializable {
 		this.idPersona = idPersona;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.EAGER, cascade =CascadeType.ALL)
 	@JoinColumn(name = "idDireccion")
 	public Direcciones getDirecciones() {
 		return this.direcciones;

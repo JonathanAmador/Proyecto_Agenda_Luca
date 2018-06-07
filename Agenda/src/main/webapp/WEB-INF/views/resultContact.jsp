@@ -157,8 +157,21 @@
 								<td>${contact.dni}</td>
 							</tr>
 							<tr>
+								<th>Dirección</th>
+								<td>${contact.direcciones.direccion}</td>
+							</tr>
+							<tr>
+								<th>Localidad</th>
+								<td>${contact.direcciones.localidad}</td>
+							</tr>
+							<tr>
+								<th>Provincia</th>
+								<td>${contact.direcciones.provincia}</td>
+							</tr>
+							<tr>
 								<th>Fecha de alta<th/>
 								<td>${contact.idEmpleado.fechaAlta}</td>
+							</tr>
 							<tr>
 								<th>Teléfono</th>
 								<td><c:forEach var="contact" items="${contact.telefonos}"

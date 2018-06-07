@@ -103,7 +103,7 @@ public class ContactController { // SearchListContact
 		int idPerson = Integer.parseInt(request.getParameter("id"));
 		Personas contact = (Personas) contactServices.get(idPerson);
 		ModelAndView model = new ModelAndView("newContact");
-		model.addObject("persona", new Personas());
+		model.addObject("persona", contact);
 		return model;		
 	}
 

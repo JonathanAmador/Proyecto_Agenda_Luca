@@ -140,13 +140,11 @@
 							<td><form:input path="nombre" /></td>
 						</tr>
 						<tr>
-							<td><form:label path="apellido1">Apellido1</form:label></td>
+							<td><form:label path="apellido1">Apellido 1</form:label></td>
 							<td><form:input path="apellido1" /></td>
 						</tr>
-						
-						
-					<!-- <tr>
-							<td><form:label path="apellido2">Apellido2</form:label></td>
+						<tr>
+							<td><form:label path="apellido2">Apellido 2</form:label></td>
 							<td><form:input path="apellido2" /></td>
 						</tr>
 						<tr>
@@ -154,33 +152,66 @@
 							<td><form:input path="dni" /></td>
 						</tr>
 						<tr>
-							<td><form:label path="telefonos">Telefono</form:label></td>
-							<td><form:input path="telefonos" /></td>
+							<td><form:label path="fechaNacimiento">Fecha nacimiento</form:label></td>
+							<td><form:input path="fechaNacimiento" /></td>
 						</tr>
 						<tr>
-							<td><form:label path="fechaNacimiento">fechaNacimiento</form:label></td>
-							<td><form:input path="fechaNacimiento" /></td>
-						</tr>-->
+							<td><form:label path="direcciones.idDireccion">Id direccion</form:label></td>
+							<td><form:input path="direcciones.idDireccion" /></td>
+						</tr>
+						<tr>
+							<td><form:label path="direcciones.direccion">Direccion</form:label></td>
+							<td><form:input path="direcciones.direccion" /></td>
+						</tr>
+						<tr>
+							<td><form:label path="direcciones.codPostal">Codigo Postal</form:label></td>
+							<td><form:input path="direcciones.codPostal" /></td>
+						</tr>
+						<tr>
+							<td><form:label path="direcciones.localidad">Localidad</form:label></td>
+							<td><form:input path="direcciones.localidad" /></td>
+						</tr>
+						<tr>
+							<td><form:label path="direcciones.provincia">Provincia</form:label></td>
+							<td><form:input path="direcciones.provincia" /></td>
+						</tr>
+						<tr>
+							<td><form:label path="idEmpleado.idEmpleado">Id empleado</form:label></td>
+							<td><form:input path="idEmpleado.idEmpleado" /></td>
+						</tr>
+						<tr>
+							<td><form:label path="idEmpleado.codEmpleado">Código empleado</form:label></td>
+							<td><form:input path="idEmpleado.codEmpleado" /></td>
+						</tr>
+						<tr>
+							<td><form:label path="idEmpleado.salario">Salario</form:label></td>
+							<td><form:input path="idEmpleado.salario" /></td>
+						</tr>
+						<tr>
+							<td><form:label path="idEmpleado.fechaAlta">Fecha  de alta</form:label></td>
+							<td><form:input path="idEmpleado.fechaAlta" /></td>
+						</tr>
 						<tr>
 							<td>
-							<select name="departamentos">
-								<option value="1">RRHH</option>
-								<option value="2">Informatica</option>
-								<option value="3">Logística</option>
-								<option value="4">Dirección</option>
-							</select></td>
+							<form:select path="idEmpleado.departamentos.iddepartamento">
+								
+								<form:option items="idEmpleado.departamentos.iddepartamento" value="1">RRHH</form:option>
+								<form:option items="idEmpleado.departamentos.iddepartamento" value="2">Informatica</form:option>
+								<form:option items="idEmpleado.departamentos.iddepartamento" value="3">Logística</form:option>
+								<form:option items="idEmpleado.departamentos.iddepartamento" value="4">Dirección</form:option>
+							</form:select></td>
 							
 						</tr>
 						<tr>
 							<td>
-							<select name="categorias">
-								<option value="1">Programador</option>
-								<option value="2">Analísta</option>
-								<option value="3">Técnico Recursos Humanos</option>
-								<option value="4">Secretaria</option>
-								<option value="5">Recepcionista</option>
-								<option value="6">Master del Universo</option>
-							</select></td>
+							<form:select path="idEmpleado.categorias.idcategorias">
+								<form:option value="1">Programador</form:option>
+								<form:option value="2">Analísta</form:option>
+								<form:option value="3">Técnico Recursos Humanos</form:option>
+								<form:option value="4">Secretaria</form:option>
+								<form:option value="5">Recepcionista</form:option>
+								<form:option value="6">Master del Universo</form:option>
+							</form:select></td>
 						</tr>
 					</table>
 					<br />
